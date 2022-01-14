@@ -112,7 +112,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>edu.fje.m03uf4projecte/edu.fje.m03uf4projecte.HelloApplication</mainClass>
+                            <mainClass>edu.fje.m03uf4projecte/edu.fje.m03uf4projecte.BibliotecaApplication</mainClass>
                         </configuration>
                     </execution>
                 </executions>
