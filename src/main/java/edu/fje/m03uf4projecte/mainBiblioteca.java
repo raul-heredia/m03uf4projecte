@@ -44,16 +44,18 @@ public class mainBiblioteca {
                     while (op2 != 0) {
                         System.out.println("Gestión de Clientes");
                         System.out.println("----- Cliente  Privado ----");
-                        System.out.println("1 - Listar Clientes Privados");
-                        System.out.println("2 - Añadir Cliente");
-                        System.out.println("3 - Modificar Cliente");
-                        System.out.println("4 - Eliminar Cliente");
+                        System.out.println(" 1 - Listar Clientes Privados");
+                        System.out.println(" 2 - Buscar Cliente Por DNI");
+                        System.out.println(" 3 - Añadir Cliente");
+                        System.out.println(" 4 - Modificar Cliente");
+                        System.out.println(" 5 - Eliminar Cliente");
                         System.out.println("---- Escuela de Música ----");
-                        System.out.println("5 - Listar Escuelas de Música");
-                        System.out.println("6 - Añadir Escuela");
-                        System.out.println("7 - Modificar Escuela");
-                        System.out.println("8 - Eliminar Escuela");
-                        System.out.println("0 - Volver Atrás");
+                        System.out.println(" 6 - Listar Escuelas de Música");
+                        System.out.println(" 7 - Buscar Escuela por Identificador");
+                        System.out.println(" 8 - Añadir Escuela");
+                        System.out.println(" 9 - Modificar Escuela");
+                        System.out.println("10 - Eliminar Escuela");
+                        System.out.println(" 0 - Volver Atrás");
                         System.out.print("Introduce una opción: ");
                         op2=Integer.parseInt(teclado.next());
 
@@ -67,7 +69,14 @@ public class mainBiblioteca {
                             }
                             pressAnyKeyToContinue();
                         }
-                        if(op2 == 2){
+                        if (op2 == 2){
+                            String dni;
+                            System.out.print("Introduzca el DNI del cliente a buscar: ");
+                            dni=teclado.next();
+                            CPrivado.listarClienteDNI(clientes, dni);
+                            pressAnyKeyToContinue();
+                        }
+                        if(op2 == 3){
                             String nombre, email, direccion, nif;
                             System.out.print("Introduzca el nombre del cliente: ");
                             nombre=teclado.next();
@@ -81,7 +90,7 @@ public class mainBiblioteca {
                             System.out.println("Cliente añadido");
                             pressAnyKeyToContinue();
                         }
-                        if(op2 == 3){
+                        if(op2 == 4){
                             String nombre, email, direccion, nif;
                             System.out.print("Introduzca el DNI del cliente a modificar: ");
                             nif=teclado.next();
@@ -94,14 +103,14 @@ public class mainBiblioteca {
                             CPrivado.modificarCliente(clientes, nombre, email, direccion, nif);
                             pressAnyKeyToContinue();
                         }
-                        if(op2 == 4){
+                        if(op2 == 5){
                             String dni;
                             System.out.print("Introduzca el DNI del cliente a eliminar: ");
                             dni=teclado.next();
                             CPrivado.eliminarCliente(clientes, dni);
                             pressAnyKeyToContinue();
                         }
-                        if(op2 == 5){
+                        if(op2 == 6){
                             Iterator<Cliente> iteratorCliente = clientes.iterator();
                             while (iteratorCliente.hasNext()){
                                 Cliente escuelaTemp = iteratorCliente.next(); // Creamos un objeto temporal del iterador
@@ -111,7 +120,10 @@ public class mainBiblioteca {
                             }
                             pressAnyKeyToContinue();
                         }
-                        if(op2 == 6){
+                        if (op2 == 7){
+
+                        }
+                        if(op2 == 8){
                             String nombreEscuela, emailEscuela, direccionEscuela, idEscuela;
                             System.out.print("Introduzca el nombre de la Escuela: ");
                             nombreEscuela=teclado.next();
@@ -125,7 +137,7 @@ public class mainBiblioteca {
                             System.out.println("Escuela añadida añadido");
                             pressAnyKeyToContinue();
                         }
-                        if(op2 == 7){
+                        if(op2 == 9){
                             String nombre, email, direccion, idEscuela;
                             System.out.print("Introduzca el Identificador de la Escuela a modificar: ");
                             idEscuela=teclado.next();
@@ -138,7 +150,7 @@ public class mainBiblioteca {
                             CMusica.modificarEscuela(clientes, nombre, email, direccion, idEscuela);
                             pressAnyKeyToContinue();
                         }
-                        if(op2 == 8){
+                        if(op2 == 10){
                             String idEscuela;
                             System.out.print("Introduzca el Identificador de la escuela a eliminar: ");
                             idEscuela=teclado.next();

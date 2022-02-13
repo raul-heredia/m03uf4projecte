@@ -50,6 +50,20 @@ public class CPrivado extends Cliente{
         super.setCarnet(carnet);
     }
 
+    public static void listarClienteDNI(ArrayList clientes, String id){
+        Boolean notFound = true;
+        for (int i = 0; i < clientes.size(); i++) {
+            if(clientes.get(i) instanceof CPrivado){
+                if (((CPrivado)clientes.get(i)).getNif().equals(id)) {
+                    notFound = false;
+                    System.out.println(clientes.get(i).toString());
+                }
+            }
+        }
+        if (notFound) System.out.println("Error, no se ha encontrado ningún cliente con DNI: " + id);
+    }
+
+
     public static void modificarCliente(ArrayList clientes, String nombre, String email, String direccion, String id){
         Boolean notFound = true;
         for (int i = 0; i < clientes.size(); i++) {
