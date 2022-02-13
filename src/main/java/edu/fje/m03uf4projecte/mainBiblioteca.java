@@ -209,6 +209,13 @@ public class mainBiblioteca {
                                     }
                                     pressAnyKeyToContinue();
                                 }
+                                if(op3 == 2){
+                                    String ISBN;
+                                    System.out.print("Introduzca el ISBN del libro a buscar: ");
+                                    ISBN=teclado.next();
+                                    LPapel.listarLibroISBN(libros, ISBN);
+                                    pressAnyKeyToContinue();
+                                }
                             }
                         }
                         if(op2 == 2){

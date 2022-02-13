@@ -2,6 +2,7 @@ package edu.fje.m03uf4projecte;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class LPapel extends Libro{
@@ -67,6 +68,20 @@ public class LPapel extends Libro{
     public void setCantidadHojas(int cantidadHojas) {
         this.cantidadHojas = cantidadHojas;
     }
+
+    public static void listarLibroISBN(ArrayList libros, String ISBN){
+        Boolean notFound = true;
+        for (int i = 0; i < libros.size(); i++) {
+            if(libros.get(i) instanceof LPapel){
+                if (((LPapel)libros.get(i)).getISBN().equals(ISBN)) {
+                    notFound = false;
+                    System.out.println(libros.get(i).toString());
+                }
+            }
+        }
+        if (notFound) System.out.println("Error, no se ha encontrado ningún libro con ISBN: " + ISBN);
+    }
+
 
     @Override
     public String toString() {
