@@ -112,6 +112,13 @@ public class mainBiblioteca {
                             System.out.println("Escuela añadida añadido");
                             pressAnyKeyToContinue();
                         }
+                        if(op2 == 8){
+                            String idEscuela;
+                            System.out.print("Introduzca el Identificador de la escuela a eliminar: ");
+                            idEscuela=teclado.next();
+                            CMusica.eliminarEscuela(clientes, idEscuela);
+                            pressAnyKeyToContinue();
+                        }
                     }
                     break;
                 case 2:
