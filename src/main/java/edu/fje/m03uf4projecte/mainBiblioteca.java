@@ -98,6 +98,20 @@ public class mainBiblioteca {
                             }
                             pressAnyKeyToContinue();
                         }
+                        if(op2 == 6){
+                            String nombreEscuela, emailEscuela, direccionEscuela, idEscuela;
+                            System.out.print("\nIntroduzca el nombre de la Escuela: ");
+                            nombreEscuela=teclado.next();
+                            System.out.print("\nIntroduzca el email de la Escuela: ");
+                            emailEscuela=teclado.next();
+                            System.out.print("\nIntroduzca la dirección de la Escuela: ");
+                            direccionEscuela=teclado.next();
+                            System.out.print("\nIntroduzca el CIF de la Escuela: ");
+                            idEscuela=teclado.next();
+                            clientes.add(new CMusica(nombreEscuela, emailEscuela, direccionEscuela, idEscuela));
+                            System.out.println("Escuela añadida añadido");
+                            pressAnyKeyToContinue();
+                        }
                     }
                     break;
                 case 2:
