@@ -69,16 +69,29 @@ public class mainBiblioteca {
                         }
                         if(op2 == 2){
                             String nombre, email, direccion, nif;
-                            System.out.print("\nIntroduzca el nombre del cliente: ");
+                            System.out.print("Introduzca el nombre del cliente: ");
                             nombre=teclado.next();
-                            System.out.print("\nIntroduzca el email del cliente: ");
+                            System.out.print("Introduzca el email del cliente: ");
                             email=teclado.next();
-                            System.out.print("\nIntroduzca la dirección del cliente: ");
+                            System.out.print("Introduzca la dirección del cliente: ");
                             direccion=teclado.next();
-                            System.out.print("\nIntroduzca el DNI del cliente: ");
+                            System.out.print("Introduzca el DNI del cliente: ");
                             nif=teclado.next();
                             clientes.add(new CPrivado(nombre, email, direccion, nif));
                             System.out.println("Cliente añadido");
+                            pressAnyKeyToContinue();
+                        }
+                        if(op2 == 3){
+                            String nombre, email, direccion, nif;
+                            System.out.print("\nIntroduzca el DNI del cliente a modificar: ");
+                            nif=teclado.next();
+                            System.out.print("Introduzca el nuevo nombre del cliente [Dejar en blanco para no modificar]: ");
+                            nombre=teclado.next();
+                            System.out.print("Introduzca el nuevo email del cliente [Dejar en blanco para no modificar]: ");
+                            email=teclado.next();
+                            System.out.print("Introduzca la nueva dirección del cliente [Dejar en blanco para no modificar]: ");
+                            direccion=teclado.next();
+                            CPrivado.modificarCliente(clientes, nombre, email, direccion, nif);
                             pressAnyKeyToContinue();
                         }
                         if(op2 == 4){
