@@ -82,6 +82,24 @@ public class LPapel extends Libro{
         if (notFound) System.out.println("Error, no se ha encontrado ningún libro con ISBN: " + ISBN);
     }
 
+    public static void modificarLibro(ArrayList libros, String titulo, String autor, int anoPublicacion, String ISBN, Genero genero, String fechaImpresion, int cantidadHojas){
+        Boolean notFound = true;
+        for (int i = 0; i < libros.size(); i++) {
+            if(libros.get(i) instanceof LPapel){
+                if (((LPapel)libros.get(i)).getISBN().equals(ISBN)) {
+                    notFound = false;
+                    if(!titulo.isEmpty()) ((LPapel) libros.get(i)).setTitulo(titulo);
+                    if(!autor.isEmpty()) ((LPapel) libros.get(i)).setAutor(autor);
+                    if(!autor.isEmpty()) ((LPapel) libros.get(i)).setAutor(autor);
+                    //if(anoPublicacion == null) ((LPapel) libros.get(i)).setAnoPublicacion(anoPublicacion);
+                    System.out.println("Escuela con Identificador " + ISBN + " Modificado");
+                }
+            }
+        }
+        if (notFound) System.out.println("Error, no se ha encontrado ninguna escuela con Identificaodr: " + ISBN);
+    }
+
+
     public static void eliminarLibro(ArrayList libros, String ISBN){
         Boolean notFound = true;
         for (int i = 0; i < libros.size(); i++) {
