@@ -82,6 +82,19 @@ public class LPapel extends Libro{
         if (notFound) System.out.println("Error, no se ha encontrado ningún libro con ISBN: " + ISBN);
     }
 
+    public static void eliminarLibro(ArrayList libros, String ISBN){
+        Boolean notFound = true;
+        for (int i = 0; i < libros.size(); i++) {
+            if(libros.get(i) instanceof LPapel){
+                if (((LPapel)libros.get(i)).getISBN().equals(ISBN)) {
+                    notFound = false;
+                    libros.remove(i);
+                    System.out.println("Libro con ISBN " + ISBN + " Eliminada");
+                }
+            }
+        }
+        if (notFound) System.out.println("Error, no se ha encontrado ningún libro con ISBN: " + ISBN);
+    }
 
     @Override
     public String toString() {

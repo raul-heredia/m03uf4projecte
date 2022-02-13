@@ -251,6 +251,13 @@ public class mainBiblioteca {
                                     System.out.println("Libro añadido");
                                     pressAnyKeyToContinue();
                                 }
+                                if(op3 == 5){
+                                    String ISBN;
+                                    System.out.print("Introduzca el ISBN del libro a eliminar: ");
+                                    ISBN=teclado.next();
+                                    LPapel.eliminarLibro(libros, ISBN);
+                                    pressAnyKeyToContinue();
+                                }
                             }
                         }
                         if(op2 == 2){
