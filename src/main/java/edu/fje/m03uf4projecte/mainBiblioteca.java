@@ -1,6 +1,8 @@
 package edu.fje.m03uf4projecte;
 
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -11,7 +13,7 @@ public class mainBiblioteca {
             System.in.read();
         } catch(Exception e){}
     }
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
         Scanner teclado=new Scanner(System.in).useDelimiter("\n");;
         // ARRAYLIST
@@ -27,9 +29,21 @@ public class mainBiblioteca {
         clientes.add(new CMusica("Jesuïtes El Clot", "hello.clot@fje.edu", "C/ Valencia 680", "A67890098"));
         clientes.add(new CMusica("Escola Musical del Clot", "escola.musical@musiccclot.edu", "C/ Clot 12", "L77917632"));
         clientes.add(new CMusica("Escola De Música de Barcelona", "hello.musicbarcelona@barcelonamusical.edu", "AV/ Meridiana 396", "A56982014"));
+        // Libros
+        libros.add(new LPapel( "Donde Los Escorpiones", "Lorenzo Silva", 2016, "9788423351039", Genero.Thriller,"02/10/2016", 352));
+        libros.add(new LPapel( "El Medico", "Noah Gordon", 2013, "9780449214268", Genero.Aventura,"15/04/2013", 608));
+        libros.add(new LPapel( "El Cuaderno de Noah", "Nicholas Sparks", 1996, "9780446520805", Genero.Ficcion,"22/07/1997", 224));
+        libros.add(new LPapel( "Guerra y paz", "León Tolstói", 1867, "9780192833983", Genero.Novela,"21/02/1995", 1900));
+        libros.add(new LPapel( "Ana Karenina", "León Tolstói", 1878, "9780142000274", Genero.Novela,"23/10/2000", 1040));
+        libros.add(new LPapel( "La peste", "Albert Camus", 1947, "9780394440613", Genero.Novela,"15/05/1988", 360));
+        libros.add(new LPapel( "El extranjero", "Albert Camus", 1942, "9780812416695", Genero.Novela,"28/02/1946", 123));
+        libros.add(new LPapel( "Herejes", "Leonardo Padura", 2013, "9786074214666", Genero.Suspense,"05/03/2013", 520));
+        libros.add(new LPapel( "Patria", "Fernando Aramburu", 2016, "9781524747121", Genero.Thriller,"05/09/2017", 646));
+        // Audio Libros
+
 
         // VARIABLES
-        int op1=99,op2=99; // Declarados en 99 porque el que botón que permite salir es el 0
+        int op1=99,op2=99, op3=99; // Declarados en 99 porque el que botón que permite salir es el 0
         do {
             System.out.println("Bienvenido a la Biblioteca Terra Alta");
             System.out.println("¿Que desea Hacer?");
@@ -60,7 +74,7 @@ public class mainBiblioteca {
                         System.out.println(" 0 - Volver Atrás");
                         System.out.print("Introduce una opción: ");
                         op2=Integer.parseInt(teclado.next());
-
+                        op3 = 99; //Reinicia el valor de op2!.
                         if(op2 == 1){
                             Iterator<Cliente> iteratorCliente = clientes.iterator();
                             while (iteratorCliente.hasNext()){
@@ -168,20 +182,55 @@ public class mainBiblioteca {
                 case 2:
                     while (op2 != 0) {
                         System.out.println("Gestión de Material");
-                        System.out.println("--------- Libros ---------");
-                        System.out.println("1 - Añadir Libro");
-                        System.out.println("2 - Añadir Audiolibro");
-                        System.out.println("3 - Modificar Libro");
-                        System.out.println("4 - Modificar Audiolibro");
-                        System.out.println("5 - Eliminar Libro");
-                        System.out.println("6 - Eliminar Audiolibro");
-                        System.out.println("---- Discos De Vinilo ----");
-                        System.out.println("7 - Añadir Disco de Vinilo");
-                        System.out.println("8 - Modificar Disco de Vinilo");
-                        System.out.println("9 - Eliminar Disco de Vinilo");
+                        System.out.println("1 - Gestionar Libros");
+                        System.out.println("2 - Gestionar Audiolibros");
+                        System.out.println("2 - Gestionar Discos De Vinilo");
                         System.out.println("0 - Volver Atrás");
                         System.out.print("Introduce una opción: ");
                         op2=Integer.parseInt(teclado.next());
+                        if(op2 == 1){
+                            while(op3 != 0){
+                                System.out.println("---- Gestión de Libros ----");
+                                System.out.println("1 - Listar Libros");
+                                System.out.println("1 - Buscar Libro por ISBN");
+                                System.out.println("3 - Añadir Libro");
+                                System.out.println("4 - Modificar Libro");
+                                System.out.println("5 - Eliminar Libro");
+                                System.out.println("0 - Volver Atrás");
+                                System.out.print("Introduce una opción: ");
+                                op3=Integer.parseInt(teclado.next());
+                                if(op3 == 1){
+                                    Iterator<Libro> libroIterator = libros.iterator();
+                                    while (libroIterator.hasNext()){
+                                        Libro libroTemp = libroIterator.next(); // Creamos un objeto temporal del iterador
+                                        if(libroTemp instanceof LPapel) { // Si el objeto temporal es instancia de CPrivado lo mostramos por pantalla
+                                            System.out.println(libroTemp) ; //  así solo listamos los clientes privados
+                                        }
+                                    }
+                                    pressAnyKeyToContinue();
+                                }
+                            }
+                        }
+                        if(op2 == 2){
+                            while(op3 != 0){
+                                System.out.println("---- Gestión de Audiolibros ----");
+                                System.out.println("1 - Listar Audiolibros");
+                                System.out.println("1 - Buscar Audiolibro por ISBN");
+                                System.out.println("3 - Añadir Audiolibro");
+                                System.out.println("4 - Modificar Audiolibro");
+                                System.out.println("5 - Eliminar Audiolibro");
+                                System.out.println("0 - Volver Atrás");
+                                System.out.print("Introduce una opción: ");
+                            }
+                        }
+                        if(op2 == 3){
+                            System.out.println("---- Gestión de Discos De Vinilo ----");
+                            System.out.println(" 9 - Añadir Disco de Vinilo");
+                            System.out.println("10 - Modificar Disco de Vinilo");
+                            System.out.println("11 - Eliminar Disco de Vinilo");
+                            System.out.println("0 - Volver Atrás");
+                            System.out.print("Introduce una opción: ");
+                        }
                     }
                     break;
                 case 3:

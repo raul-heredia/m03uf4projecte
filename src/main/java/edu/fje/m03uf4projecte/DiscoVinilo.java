@@ -3,7 +3,7 @@ package edu.fje.m03uf4projecte;
 public class DiscoVinilo extends Material{
     private int numPista, duracionDisco;
 
-    public DiscoVinilo(String titulo, String autor, String anoPublicacion, int numPista, int duracionDisco) {
+    public DiscoVinilo(String titulo, String autor, int anoPublicacion, int numPista, int duracionDisco) {
         super(titulo, autor, anoPublicacion);
         this.numPista = numPista;
         this.duracionDisco = duracionDisco;

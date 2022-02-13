@@ -11,4 +11,5 @@ public enum Genero {
     Suspense,
     Comedia,
     Didactico,
+    Novela,
 }
