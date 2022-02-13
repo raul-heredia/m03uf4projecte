@@ -216,6 +216,41 @@ public class mainBiblioteca {
                                     LPapel.listarLibroISBN(libros, ISBN);
                                     pressAnyKeyToContinue();
                                 }
+                                if(op3 == 3){
+                                    String titulo, autor, ISBN, fechaImpresion;
+                                    int cantidadHojas,anoPublicacion;
+                                    Genero genero;
+
+                                    System.out.print("Introduzca el ISBN del libro: ");
+                                    ISBN=teclado.next();
+                                    System.out.print("Introduzca el título del libro: ");
+                                    titulo=teclado.next();
+                                    System.out.print("Introduzca el autor del libro: ");
+                                    autor=teclado.next();
+                                    System.out.print("Introduzca el género del libro de la siguiente lista\n" +
+                                            "- Aventura\n" +
+                                            "- Ficcion\n" +
+                                            "- Fantasia\n" +
+                                            "- Misterio\n" +
+                                            "- Romance\n" +
+                                            "- Thriller\n" +
+                                            "- Terror\n" +
+                                            "- Suspense\n" +
+                                            "- Comedia\n" +
+                                            "- Didactico\n" +
+                                            "- Novela\n" +
+                                            "Introduzca el género: ");
+                                    genero=Genero.valueOf(teclado.next());
+                                    System.out.print("Introduzca el año de publicación del libro: ");
+                                    anoPublicacion=Integer.parseInt(teclado.next());
+                                    System.out.print("Introduzca la fecha de impresión del libro: ");
+                                    fechaImpresion=teclado.next();
+                                    System.out.print("Introduzca el número de hojas del libro: ");
+                                    cantidadHojas=Integer.parseInt(teclado.next());
+                                    libros.add(new LPapel( titulo, autor, anoPublicacion, ISBN, genero,fechaImpresion, cantidadHojas));
+                                    System.out.println("Libro añadido");
+                                    pressAnyKeyToContinue();
+                                }
                             }
                         }
                         if(op2 == 2){
