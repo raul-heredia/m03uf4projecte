@@ -42,4 +42,5 @@ public class Cliente {
     public void setCarnet(int carnet) {
         this.carnet = carnet;
     }
+
 }

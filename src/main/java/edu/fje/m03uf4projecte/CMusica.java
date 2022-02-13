@@ -18,12 +18,10 @@ public class CMusica extends Cliente{
 
     @Override
     public String toString() {
-        return "CMusica{" +
-                "idEscola='" + idEscola + '\'' +
+        return "idEscola='" + idEscola + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", email='" + email + '\'' +
                 ", direccion='" + direccion + '\'' +
-                ", carnet=" + carnet +
-                '}';
+                ", carnet=" + carnet;
     }
 }
