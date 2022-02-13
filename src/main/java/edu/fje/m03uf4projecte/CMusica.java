@@ -50,6 +50,19 @@ public class CMusica extends Cliente{
         super.setCarnet(carnet);
     }
 
+    public static void listarEscuelaId(ArrayList clientes, String id){
+        Boolean notFound = true;
+        for (int i = 0; i < clientes.size(); i++) {
+            if(clientes.get(i) instanceof CMusica){
+                if (((CMusica)clientes.get(i)).getIdEscola().equals(id)) {
+                    notFound = false;
+                    System.out.println(clientes.get(i).toString());
+                }
+            }
+        }
+        if (notFound) System.out.println("Error, no se ha encontrado ninguna Escuela con Identificador: " + id);
+    }
+
     public static void modificarEscuela(ArrayList clientes, String nombre, String email, String direccion, String id){
         Boolean notFound = true;
         for (int i = 0; i < clientes.size(); i++) {

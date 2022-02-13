@@ -19,9 +19,11 @@ public class mainBiblioteca {
         ArrayList<Libro> libros = new ArrayList<>();
         ArrayList<DiscoVinilo> discosVinilo = new ArrayList<>();
 
-        clientes.add(new CPrivado("Raúl Heredia Maza", "raul.heredia@outlook.com", "C/ Mallorca 666", "21761046X"));
+        // Clientes Privados
+        clientes.add(new CPrivado("Raúl Heredia Maza", "raul.heredia@outlook.com", "C/ Mallorca 666", "21651036Z"));
         clientes.add(new CPrivado("Marc Carbonell Sariola", "marc.carbonell@outlook.com", "C/ Pixapins 420", "21007891C"));
         clientes.add(new CPrivado("Juan Martínez Alonso", "juan.martinez@gmail.com", "C/ Sant Andreu 33", "76120965X"));
+        // Escuelas de musica
         clientes.add(new CMusica("Jesuïtes El Clot", "hello.clot@fje.edu", "C/ Valencia 680", "A67890098"));
         clientes.add(new CMusica("Escola Musical del Clot", "escola.musical@musiccclot.edu", "C/ Clot 12", "L77917632"));
         clientes.add(new CMusica("Escola De Música de Barcelona", "hello.musicbarcelona@barcelonamusical.edu", "AV/ Meridiana 396", "A56982014"));
@@ -121,7 +123,11 @@ public class mainBiblioteca {
                             pressAnyKeyToContinue();
                         }
                         if (op2 == 7){
-
+                            String idEscuela;
+                            System.out.print("Introduzca el Identificador de la Escuela a buscar: ");
+                            idEscuela=teclado.next();
+                            CMusica.listarEscuelaId(clientes, idEscuela);
+                            pressAnyKeyToContinue();
                         }
                         if(op2 == 8){
                             String nombreEscuela, emailEscuela, direccionEscuela, idEscuela;
