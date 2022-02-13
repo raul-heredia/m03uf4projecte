@@ -83,7 +83,7 @@ public class mainBiblioteca {
                         }
                         if(op2 == 3){
                             String nombre, email, direccion, nif;
-                            System.out.print("\nIntroduzca el DNI del cliente a modificar: ");
+                            System.out.print("Introduzca el DNI del cliente a modificar: ");
                             nif=teclado.next();
                             System.out.print("Introduzca el nuevo nombre del cliente [Dejar en blanco para no modificar]: ");
                             nombre=teclado.next();
@@ -113,16 +113,29 @@ public class mainBiblioteca {
                         }
                         if(op2 == 6){
                             String nombreEscuela, emailEscuela, direccionEscuela, idEscuela;
-                            System.out.print("\nIntroduzca el nombre de la Escuela: ");
+                            System.out.print("Introduzca el nombre de la Escuela: ");
                             nombreEscuela=teclado.next();
-                            System.out.print("\nIntroduzca el email de la Escuela: ");
+                            System.out.print("Introduzca el email de la Escuela: ");
                             emailEscuela=teclado.next();
-                            System.out.print("\nIntroduzca la dirección de la Escuela: ");
+                            System.out.print("Introduzca la dirección de la Escuela: ");
                             direccionEscuela=teclado.next();
-                            System.out.print("\nIntroduzca el CIF de la Escuela: ");
+                            System.out.print("Introduzca el CIF de la Escuela: ");
                             idEscuela=teclado.next();
                             clientes.add(new CMusica(nombreEscuela, emailEscuela, direccionEscuela, idEscuela));
                             System.out.println("Escuela añadida añadido");
+                            pressAnyKeyToContinue();
+                        }
+                        if(op2 == 7){
+                            String nombre, email, direccion, idEscuela;
+                            System.out.print("Introduzca el Identificador de la Escuela a modificar: ");
+                            idEscuela=teclado.next();
+                            System.out.print("Introduzca el nuevo nombre de la Escuela [Dejar en blanco para no modificar]: ");
+                            nombre=teclado.next();
+                            System.out.print("Introduzca el nuevo email de la Escuela [Dejar en blanco para no modificar]: ");
+                            email=teclado.next();
+                            System.out.print("Introduzca la nueva dirección de la Escuela [Dejar en blanco para no modificar]: ");
+                            direccion=teclado.next();
+                            CMusica.modificarEscuela(clientes, nombre, email, direccion, idEscuela);
                             pressAnyKeyToContinue();
                         }
                         if(op2 == 8){
