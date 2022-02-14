@@ -221,43 +221,9 @@ public class mainBiblioteca {
                                     int cantidadHojas,anoPublicacion;
                                     Genero genero;
 
-                                    System.out.print("Introduzca el ISBN del libro [Dejar en blanco para no modificar]: ");
-                                    ISBN=teclado.next();
-                                    System.out.print("Introduzca el título del libro [Dejar en blanco para no modificar]: ");
-                                    titulo=teclado.next();
-                                    System.out.print("Introduzca el autor del libro [Dejar en blanco para no modificar]: ");
-                                    autor=teclado.next();
-                                    System.out.print("Introduzca el género del libro de la siguiente lista [Dejar en blanco para no modificar]\n" +
-                                            "- Aventura\n" +
-                                            "- Ficcion\n" +
-                                            "- Fantasia\n" +
-                                            "- Misterio\n" +
-                                            "- Romance\n" +
-                                            "- Thriller\n" +
-                                            "- Terror\n" +
-                                            "- Suspense\n" +
-                                            "- Comedia\n" +
-                                            "- Didactico\n" +
-                                            "- Novela\n" +
-                                            "Introduzca el género: ");
-                                    genero=Genero.valueOf(teclado.next());
-                                    System.out.print("Introduzca el año de publicación del libro [Dejar en blanco para no modificar]: ");
-                                    anoPublicacion=Integer.parseInt(teclado.next());
-                                    System.out.print("Introduzca la fecha de impresión del libro [Dejar en blanco para no modificar]: ");
-                                    fechaImpresion=teclado.next();
-                                    System.out.print("Introduzca el número de hojas del libro [Dejar en blanco para no modificar]: ");
-                                    cantidadHojas=Integer.parseInt(teclado.next());
-                                    libros.add(new LPapel( titulo, autor, anoPublicacion, ISBN, genero,fechaImpresion, cantidadHojas));
-                                    pressAnyKeyToContinue();
-                                }
-                                if(op3 == 4){
-                                    String titulo, autor, ISBN, fechaImpresion;
-                                    int cantidadHojas,anoPublicacion;
-                                    Genero genero;
-
                                     System.out.print("Introduzca el ISBN del libro: ");
                                     ISBN=teclado.next();
-                                    System.out.print("Introduzca el Título del libro: ");
+                                    System.out.print("Introduzca el título del libro: ");
                                     titulo=teclado.next();
                                     System.out.print("Introduzca el autor del libro: ");
                                     autor=teclado.next();
@@ -274,19 +240,61 @@ public class mainBiblioteca {
                                             "- Didactico\n" +
                                             "- Novela\n" +
                                             "Introduzca el género: ");
-                                    try { // Si no se rellena para cambiarlo evitamos que pete
-                                        genero=Genero.valueOf(teclado.next());
-                                    }catch(Exception e){
-
-                                    }
+                                    genero=Genero.valueOf(teclado.next());
                                     System.out.print("Introduzca el año de publicación del libro: ");
                                     anoPublicacion=Integer.parseInt(teclado.next());
-                                    System.out.print("Introduzca la fecha de impresión del libro: ");
+                                    System.out.print("Introduzca la fecha de impresión del libro [dd/mm/yyyy]: ");
                                     fechaImpresion=teclado.next();
                                     System.out.print("Introduzca el número de hojas del libro: ");
                                     cantidadHojas=Integer.parseInt(teclado.next());
                                     libros.add(new LPapel( titulo, autor, anoPublicacion, ISBN, genero,fechaImpresion, cantidadHojas));
-                                    System.out.println("Libro añadido");
+                                    pressAnyKeyToContinue();
+                                }
+                                if(op3 == 4){
+                                    String titulo, autor, ISBN, fechaImpresion;
+                                    int cantidadHojas,anoPublicacion;
+                                    Genero genero;
+
+                                    System.out.print("Introduzca el ISBN del libro [Dejar en blanco para no modificar]: ");
+                                    ISBN=teclado.next();
+                                    System.out.print("Introduzca el Título del libro [Dejar en blanco para no modificar]: ");
+                                    titulo=teclado.next();
+                                    System.out.print("Introduzca el autor del libro [Dejar en blanco para no modificar]: ");
+                                    autor=teclado.next();
+                                    System.out.print("Introduzca el género del libro de la siguiente lista [Dejar en blanco para no modificar]\n" +
+                                            "- Aventura\n" +
+                                            "- Ficcion\n" +
+                                            "- Fantasia\n" +
+                                            "- Misterio\n" +
+                                            "- Romance\n" +
+                                            "- Thriller\n" +
+                                            "- Terror\n" +
+                                            "- Suspense\n" +
+                                            "- Comedia\n" +
+                                            "- Didactico\n" +
+                                            "- Novela\n" +
+                                            "Introduzca el género: ");
+                                    try{
+                                        genero=Genero.valueOf(teclado.next());
+                                    }catch(Exception e){
+                                        genero=Genero.NoModificar;
+                                    }
+                                    System.out.print("Introduzca el año de publicación del libro [Dejar en blanco para no modificar]: ");
+                                    try{
+                                        anoPublicacion=Integer.parseInt(teclado.next());
+                                    }catch(Exception e){
+                                        anoPublicacion = 0;
+                                    }
+                                    System.out.println(anoPublicacion);
+                                    System.out.print("Introduzca la fecha de impresión del libro [Dejar en blanco para no modificar][dd/mm/yyyy]: ");
+                                    fechaImpresion=teclado.next();
+                                    System.out.print("Introduzca el número de hojas del libro [Dejar en blanco para no modificar]: ");
+                                    try{
+                                        cantidadHojas=Integer.parseInt(teclado.next());
+                                    }catch(Exception e){
+                                        cantidadHojas = 0;
+                                    }
+                                    LPapel.modificarLibro( libros,  titulo,  autor,  anoPublicacion,  ISBN,  genero,  fechaImpresion,  cantidadHojas);
                                     pressAnyKeyToContinue();
                                 }
                                 if(op3 == 5){

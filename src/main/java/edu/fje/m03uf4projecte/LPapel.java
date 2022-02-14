@@ -90,13 +90,15 @@ public class LPapel extends Libro{
                     notFound = false;
                     if(!titulo.isEmpty()) ((LPapel) libros.get(i)).setTitulo(titulo);
                     if(!autor.isEmpty()) ((LPapel) libros.get(i)).setAutor(autor);
-                    if(!autor.isEmpty()) ((LPapel) libros.get(i)).setAutor(autor);
-                    //if(anoPublicacion == null) ((LPapel) libros.get(i)).setAnoPublicacion(anoPublicacion);
-                    System.out.println("Escuela con Identificador " + ISBN + " Modificado");
+                    if(!fechaImpresion.isEmpty()) ((LPapel) libros.get(i)).setFechaImpresion(fechaImpresion);
+                    if(genero != Genero.NoModificar) ((LPapel) libros.get(i)).setGenero(genero);
+                    if(anoPublicacion != 0) ((LPapel) libros.get(i)).setAnoPublicacion(anoPublicacion);
+                    if(cantidadHojas != 0) ((LPapel) libros.get(i)).setCantidadHojas(cantidadHojas);
+                    System.out.println("Libro con ISBN " + ISBN + " Modificado");
                 }
             }
         }
-        if (notFound) System.out.println("Error, no se ha encontrado ninguna escuela con Identificaodr: " + ISBN);
+        if (notFound) System.out.println("Error, no se ha encontrado ningún libro con ISBN: " + ISBN);
     }
 
 

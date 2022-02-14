@@ -1,6 +1,7 @@
 package edu.fje.m03uf4projecte;
 
 public enum Genero {
+    NoModificar,
     Aventura,
     Ficcion,
     Fantasia,
