@@ -1,8 +1,11 @@
 package edu.fje.m03uf4projecte;
 
+import java.util.HashSet;
+
 public class Web {
     private String nombreEmpresa, domSocial;
     private int idWebRegMercantil, telefono;
+    private HashSet<AudioLibro> AudioLibros = new HashSet<AudioLibro>();
 
     public Web(String nombreEmpresa, String domSocial, int idWebRegMercantil, int telefono) {
         this.nombreEmpresa = nombreEmpresa;

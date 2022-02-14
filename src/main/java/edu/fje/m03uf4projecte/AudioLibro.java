@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class AudioLibro extends Libro{
     private int duracion;
+    private Web web;
 
     public AudioLibro(String titulo, String autor, int anoPublicacion, String ISBN, Genero genero, int duracion) {
         super(titulo, autor, anoPublicacion, ISBN, genero);
@@ -80,11 +81,11 @@ public class AudioLibro extends Libro{
                     if(genero != Genero.NoModificar) ((AudioLibro) libros.get(i)).setGenero(genero);
                     if(anoPublicacion != 0) ((AudioLibro) libros.get(i)).setAnoPublicacion(anoPublicacion);
                     if(Duracion != 0) ((AudioLibro) libros.get(i)).setDuracion(Duracion);
-                    System.out.println("Libro con ISBN " + ISBN + " Modificado");
+                    System.out.println("Audiolibro con ISBN " + ISBN + " Modificado");
                 }
             }
         }
-        if (notFound) System.out.println("Error, no se ha encontrado ningún libro con ISBN: " + ISBN);
+        if (notFound) System.out.println("Error, no se ha encontrado ningún Audiolibro con ISBN: " + ISBN);
     }
 
 
@@ -95,10 +96,10 @@ public class AudioLibro extends Libro{
                 if (((AudioLibro)libros.get(i)).getISBN().equals(ISBN)) {
                     notFound = false;
                     libros.remove(i);
-                    System.out.println("Libro con ISBN " + ISBN + " Eliminada");
+                    System.out.println("Audiolibro con ISBN " + ISBN + " Eliminado");
                 }
             }
         }
-        if (notFound) System.out.println("Error, no se ha encontrado ningún libro con ISBN: " + ISBN);
+        if (notFound) System.out.println("Error, no se ha encontrado ningún Audiolibro con ISBN: " + ISBN);
     }
 }

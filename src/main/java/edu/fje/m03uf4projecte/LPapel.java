@@ -109,7 +109,7 @@ public class LPapel extends Libro{
                 if (((LPapel)libros.get(i)).getISBN().equals(ISBN)) {
                     notFound = false;
                     libros.remove(i);
-                    System.out.println("Libro con ISBN " + ISBN + " Eliminada");
+                    System.out.println("Libro con ISBN " + ISBN + " Eliminado");
                 }
             }
         }
