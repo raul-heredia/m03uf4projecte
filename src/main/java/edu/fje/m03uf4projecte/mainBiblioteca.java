@@ -396,9 +396,10 @@ public class mainBiblioteca {
                             while(op3 != 0) {
                                 System.out.println("---- Gestión de Discos De Vinilo ----");
                                 System.out.println("1 - Listar Discos de Vinilo");
-                                System.out.println("2 - Añadir Disco de Vinilo");
-                                System.out.println("3 - Modificar Disco de Vinilo");
-                                System.out.println("4 - Eliminar Disco de Vinilo");
+                                System.out.println("2 - Buscar Disco de Vinilo por ID");
+                                System.out.println("3 - Añadir Disco de Vinilo");
+                                System.out.println("4 - Modificar Disco de Vinilo");
+                                System.out.println("5 - Eliminar Disco de Vinilo");
                                 System.out.println("0 - Volver Atrás");
                                 System.out.print("Introduce una opción: ");
                                 op3 = Integer.parseInt(teclado.next());
@@ -411,6 +412,13 @@ public class mainBiblioteca {
                                     pressAnyKeyToContinue();
                                 }
                                 if(op3 == 2){
+                                    int id;
+                                    System.out.print("Introduzca el ID del Disco de Vinilo a buscar: ");
+                                    id=Integer.parseInt(teclado.next());
+                                    DiscoVinilo.listarDiscoViniloId(discosVinilo, id);
+                                    pressAnyKeyToContinue();
+                                }
+                                if(op3 == 3){
                                     String titulo, autor;
                                     int idDisco, anoPublicacion, numPista, duracionDisco;
                                     System.out.print("Introduzca el Id del Disco: ");
