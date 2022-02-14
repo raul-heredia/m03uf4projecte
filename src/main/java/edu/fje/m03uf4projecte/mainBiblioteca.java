@@ -20,7 +20,7 @@ public class mainBiblioteca {
         ArrayList<Cliente> clientes = new ArrayList<>();
         ArrayList<Libro> libros = new ArrayList<>();
         ArrayList<DiscoVinilo> discosVinilo = new ArrayList<>();
-        ArrayList<AudioLibro> audioLibros = new ArrayList<>();
+        ArrayList<Treballador> trabajadores = new ArrayList<>();
 
         // Clientes Privados
         clientes.add(new CPrivado("Raúl Heredia Maza", "raul.heredia@outlook.com", "C/ Mallorca 666", "21651036Z"));
@@ -41,13 +41,12 @@ public class mainBiblioteca {
         libros.add(new LPapel( "Herejes", "Leonardo Padura", 2013, "9786074214666", Genero.Suspense,"05/03/2013", 520));
         libros.add(new LPapel( "Patria", "Fernando Aramburu", 2016, "9781524747121", Genero.Thriller,"05/09/2017", 646));
         // Audio Libros
-        audioLibros.add(new AudioLibro("Patria", "Fernando Aramburu", 2019, "9781524747158",Genero.Thriller,3));
-
+        libros.add(new AudioLibro("Patria", "Fernando Aramburu", 2019, "9781524747158",Genero.Thriller,3));
         //Disco Vinilo
         discosVinilo.add(new DiscoVinilo(1,"Los éxitos de Manolo Escobar", "Manolo Escobar", 1999, 15, 60));
         discosVinilo.add(new DiscoVinilo(2,"Greatest Hits I, II & III: The Platinum Collection - 3 Discos", "Queen", 2011, 51, 208));
-
-
+        // TRABAJADORES
+        trabajadores.add(new Treballador("23745699Z","Killian",false, 1200F, clientes, libros, discosVinilo));
         // VARIABLES
         int op1=99,op2=99, op3=99, op4=99; // Declarados en 99 porque el que botón que permite salir es el 0
         do {
@@ -337,9 +336,9 @@ public class mainBiblioteca {
                                 System.out.print("Introduce una opción: ");
                                 op4=Integer.parseInt(teclado.next());
                                 if(op4 == 1){
-                                    Iterator<AudioLibro> libroIterator = audioLibros.iterator();
+                                    Iterator<Libro> libroIterator = libros.iterator();
                                     while (libroIterator.hasNext()){
-                                        AudioLibro libroTemp = libroIterator.next(); // Creamos un objeto temporal del iterador
+                                        Libro libroTemp = libroIterator.next(); // Creamos un objeto temporal del iterador
                                         if(libroTemp instanceof AudioLibro) { // Si el objeto temporal es instancia de CPrivado lo mostramos por pantalla
                                             System.out.println(libroTemp) ; //  así solo listamos los clientes privados
                                         }
@@ -432,7 +431,7 @@ public class mainBiblioteca {
                                     }catch(Exception e){
                                         duracion = 0;
                                     }
-                                    AudioLibro.modificarAudioLibro( audioLibros, titulo, autor, anoPublicacion, ISBN, genero, duracion);
+                                    AudioLibro.modificarAudioLibro( libros, titulo, autor, anoPublicacion, ISBN, genero, duracion);
                                     pressAnyKeyToContinue();
                                 }
                             }
@@ -533,17 +532,48 @@ public class mainBiblioteca {
                     }
                     break;
                 case 3:
-                    while (op2 != 0) {
-                        System.out.println("verduras");
-                        System.out.println("1 - espinaca :$100");
-                        System.out.println("2- coliflor :$200");
-                        System.out.println("3 - zanahoria :$300");
-                        System.out.println("4 - tomate :$400");
-                        System.out.println("5 - cebolla :$500");
-                        System.out.println("6 - volver atras");
-
-                        op2=Integer.parseInt(teclado.next());
-
+                    while (op2 != 0){
+                        System.out.println("---- Gestión de Préstamos ----");
+                        System.out.println("0 - Volver Atrás");
+                        System.out.print("Introduce una opción: ");
+                        op2 = Integer.parseInt(teclado.next());
+                    }
+                    break;
+                case 4:
+                    while(op2 != 0){
+                        String usuario, password;
+                        System.out.print("usuario: ");
+                        usuario = teclado.next();
+                        System.out.print("contraseña: ");
+                        password = teclado.next();
+                        if(!usuario.equals("admin") && !password.equals("admin")) {
+                            System.out.println("Usuario y/o contraseña incorrectos");
+                            pressAnyKeyToContinue();
+                            break;
+                        }
+                        System.out.println("---- Gestión de Trabajadores ----");
+                        System.out.println("1 - Listar Trabajadores");
+                        System.out.println("2 - Buscar Trabajador por DNI");
+                        System.out.println("3 - Añadir Trabajador");
+                        System.out.println("4 - Modificar Trabajador");
+                        System.out.println("5 - Eliminar Trabajador");
+                        System.out.println("0 - Volver Atrás");
+                        System.out.print("Introduce una opción: ");
+                        op2 = Integer.parseInt(teclado.next());
+                        if(op2 == 1){
+                            Iterator<Treballador> iteratorTrabajadores = trabajadores.iterator();
+                            while (iteratorTrabajadores.hasNext()) {
+                                System.out.println(iteratorTrabajadores.next());
+                            }
+                            pressAnyKeyToContinue();
+                        }
+                        if(op2 == 2){
+                            String nif;
+                            System.out.print("Introduzca el DNI del Empleado a buscar: ");
+                            nif=teclado.next();
+                            Treballador.listarTrabajadorNIF(trabajadores, nif);
+                            pressAnyKeyToContinue();
+                        }
                     }
                     break;
             }
