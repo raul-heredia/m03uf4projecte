@@ -40,6 +40,11 @@ public class mainBiblioteca {
         libros.add(new LPapel( "Herejes", "Leonardo Padura", 2013, "9786074214666", Genero.Suspense,"05/03/2013", 520));
         libros.add(new LPapel( "Patria", "Fernando Aramburu", 2016, "9781524747121", Genero.Thriller,"05/09/2017", 646));
         // Audio Libros
+        libros.add(new AudioLibro("Patria", "Fernando Aramburu", 2019, "9781524747158",Genero.Thriller,3));
+
+        //Disco Vinilo
+        discosVinilo.add(new DiscoVinilo(1,"Los éxitos de Manolo Escobar", "Manolo Escobar", 1999, 15, 60));
+        discosVinilo.add(new DiscoVinilo(2,"Greatest Hits I, II & III: The Platinum Collection - 3 Discos", "Queen", 2011, 51, 208));
 
 
         // VARIABLES
@@ -102,8 +107,12 @@ public class mainBiblioteca {
                             direccion=teclado.next();
                             System.out.print("Introduzca el DNI del cliente: ");
                             nif=teclado.next();
-                            clientes.add(new CPrivado(nombre, email, direccion, nif));
-                            System.out.println("Cliente añadido");
+                            try{
+                                clientes.add(new CPrivado(nombre, email, direccion, nif));
+                                System.out.println("Cliente añadido");
+                            }catch(Exception e){
+                                System.out.println("Error: No se ha añadido el Cliente");
+                            }
                             pressAnyKeyToContinue();
                         }
                         if(op2 == 4){
@@ -153,8 +162,12 @@ public class mainBiblioteca {
                             direccionEscuela=teclado.next();
                             System.out.print("Introduzca el CIF de la Escuela: ");
                             idEscuela=teclado.next();
-                            clientes.add(new CMusica(nombreEscuela, emailEscuela, direccionEscuela, idEscuela));
-                            System.out.println("Escuela añadida añadido");
+                            try{
+                                clientes.add(new CMusica(nombreEscuela, emailEscuela, direccionEscuela, idEscuela));
+                                System.out.println("Escuela añadida añadido");
+                            }catch(Exception e){
+                                System.out.println("Error: No se ha añadido la Escuela");
+                            }
                             pressAnyKeyToContinue();
                         }
                         if(op2 == 9){
@@ -184,7 +197,7 @@ public class mainBiblioteca {
                         System.out.println("Gestión de Material");
                         System.out.println("1 - Gestionar Libros");
                         System.out.println("2 - Gestionar Audiolibros");
-                        System.out.println("2 - Gestionar Discos De Vinilo");
+                        System.out.println("3 - Gestionar Discos De Vinilo");
                         System.out.println("0 - Volver Atrás");
                         System.out.print("Introduce una opción: ");
                         op2=Integer.parseInt(teclado.next());
@@ -247,7 +260,12 @@ public class mainBiblioteca {
                                     fechaImpresion=teclado.next();
                                     System.out.print("Introduzca el número de hojas del libro: ");
                                     cantidadHojas=Integer.parseInt(teclado.next());
-                                    libros.add(new LPapel( titulo, autor, anoPublicacion, ISBN, genero,fechaImpresion, cantidadHojas));
+                                    try{
+                                        libros.add(new LPapel( titulo, autor, anoPublicacion, ISBN, genero,fechaImpresion, cantidadHojas));
+                                        System.out.print("El Libro se ha añadido ");
+                                    } catch (Exception e) {
+                                        System.out.print("Error: El Libro no se ha añadido ");
+                                    }
                                     pressAnyKeyToContinue();
                                 }
                                 if(op3 == 4){
@@ -255,7 +273,7 @@ public class mainBiblioteca {
                                     int cantidadHojas,anoPublicacion;
                                     Genero genero;
 
-                                    System.out.print("Introduzca el ISBN del libro [Dejar en blanco para no modificar]: ");
+                                    System.out.print("Introduzca el ISBN del libro a modificar: ");
                                     ISBN=teclado.next();
                                     System.out.print("Introduzca el Título del libro [Dejar en blanco para no modificar]: ");
                                     titulo=teclado.next();
@@ -310,21 +328,112 @@ public class mainBiblioteca {
                             while(op3 != 0){
                                 System.out.println("---- Gestión de Audiolibros ----");
                                 System.out.println("1 - Listar Audiolibros");
-                                System.out.println("1 - Buscar Audiolibro por ISBN");
+                                System.out.println("2 - Buscar Audiolibro por ISBN");
                                 System.out.println("3 - Añadir Audiolibro");
                                 System.out.println("4 - Modificar Audiolibro");
                                 System.out.println("5 - Eliminar Audiolibro");
                                 System.out.println("0 - Volver Atrás");
                                 System.out.print("Introduce una opción: ");
+                                op3=Integer.parseInt(teclado.next());
+                                if(op3 == 1){
+                                    Iterator<Libro> libroIterator = libros.iterator();
+                                    while (libroIterator.hasNext()){
+                                        Libro libroTemp = libroIterator.next(); // Creamos un objeto temporal del iterador
+                                        if(libroTemp instanceof AudioLibro) { // Si el objeto temporal es instancia de CPrivado lo mostramos por pantalla
+                                            System.out.println(libroTemp) ; //  así solo listamos los clientes privados
+                                        }
+                                    }
+                                    pressAnyKeyToContinue();
+                                }
+                                if(op3 == 2){
+                                    String ISBN;
+                                    System.out.print("Introduzca el ISBN del Audiolibro a buscar: ");
+                                    ISBN=teclado.next();
+                                    AudioLibro.listarAudioLibroISBN(libros, ISBN);
+                                    pressAnyKeyToContinue();
+                                }
+                                if(op3 == 3){
+                                    String titulo, autor, ISBN;
+                                    int duracion,anoPublicacion;
+                                    Genero genero;
+
+                                    System.out.print("Introduzca el ISBN del libro: ");
+                                    ISBN=teclado.next();
+                                    System.out.print("Introduzca el título del libro: ");
+                                    titulo=teclado.next();
+                                    System.out.print("Introduzca el autor del libro: ");
+                                    autor=teclado.next();
+                                    System.out.print("Introduzca el género del libro de la siguiente lista\n" +
+                                            "- Aventura\n" +
+                                            "- Ficcion\n" +
+                                            "- Fantasia\n" +
+                                            "- Misterio\n" +
+                                            "- Romance\n" +
+                                            "- Thriller\n" +
+                                            "- Terror\n" +
+                                            "- Suspense\n" +
+                                            "- Comedia\n" +
+                                            "- Didactico\n" +
+                                            "- Novela\n" +
+                                            "Introduzca el género: ");
+                                    genero=Genero.valueOf(teclado.next());
+                                    System.out.print("Introduzca el año de publicación del libro: ");
+                                    anoPublicacion=Integer.parseInt(teclado.next());
+                                    System.out.print("Introduzca la duracion del AudioLibro:  ");
+                                    duracion=Integer.parseInt(teclado.next());
+
+                                    try{
+                                        libros.add(new AudioLibro(titulo, autor, anoPublicacion, ISBN, genero,duracion));
+                                        System.out.println("El AudioLibro se ha añadido ");
+                                    } catch (Exception e) {
+                                        System.out.println("Error: El AudioLibro no se ha añadido ");
+                                    }
+                                    pressAnyKeyToContinue();
+                                }
                             }
                         }
                         if(op2 == 3){
-                            System.out.println("---- Gestión de Discos De Vinilo ----");
-                            System.out.println(" 9 - Añadir Disco de Vinilo");
-                            System.out.println("10 - Modificar Disco de Vinilo");
-                            System.out.println("11 - Eliminar Disco de Vinilo");
-                            System.out.println("0 - Volver Atrás");
-                            System.out.print("Introduce una opción: ");
+                            while(op3 != 0) {
+                                System.out.println("---- Gestión de Discos De Vinilo ----");
+                                System.out.println("1 - Listar Discos de Vinilo");
+                                System.out.println("2 - Añadir Disco de Vinilo");
+                                System.out.println("3 - Modificar Disco de Vinilo");
+                                System.out.println("4 - Eliminar Disco de Vinilo");
+                                System.out.println("0 - Volver Atrás");
+                                System.out.print("Introduce una opción: ");
+                                op3 = Integer.parseInt(teclado.next());
+
+                                if (op3 == 1) {
+                                    Iterator<DiscoVinilo> iteratorDiscoVinilo = discosVinilo.iterator();
+                                    while (iteratorDiscoVinilo.hasNext()) {
+                                        System.out.println(iteratorDiscoVinilo.next());
+                                    }
+                                    pressAnyKeyToContinue();
+                                }
+                                if(op3 == 2){
+                                    String titulo, autor;
+                                    int idDisco, anoPublicacion, numPista, duracionDisco;
+                                    System.out.print("Introduzca el Id del Disco: ");
+                                    idDisco=Integer.parseInt(teclado.next());
+                                    System.out.print("Introduzca el Título del Disco: ");
+                                    titulo=teclado.next();
+                                    System.out.print("Introduzca el Autor del Disco: ");
+                                    autor=teclado.next();
+                                    System.out.print("Introduzca el Año de Publicación del Disco: ");
+                                    anoPublicacion=Integer.parseInt(teclado.next());
+                                    System.out.print("Introduzca el número de pistas totales del Disco: ");
+                                    numPista=Integer.parseInt(teclado.next());
+                                    System.out.print("Introduzca la Duración del Disco (En minutos): ");
+                                    duracionDisco=Integer.parseInt(teclado.next());
+                                    try{
+                                        discosVinilo.add(new DiscoVinilo(idDisco, titulo, autor, anoPublicacion, numPista, duracionDisco));
+                                        System.out.println("Disco añadido");
+                                    }catch(Exception e){
+                                        System.out.println("Error, No se ha podido añadir el Disco");
+                                    }
+                                    pressAnyKeyToContinue();
+                                }
+                            }
                         }
                     }
                     break;

@@ -1,12 +1,21 @@
 package edu.fje.m03uf4projecte;
 
 public class DiscoVinilo extends Material{
-    private int numPista, duracionDisco;
+    private int idDisco, numPista, duracionDisco;
 
-    public DiscoVinilo(String titulo, String autor, int anoPublicacion, int numPista, int duracionDisco) {
+    public DiscoVinilo(int idDisco, String titulo, String autor, int anoPublicacion, int numPista, int duracionDisco) {
         super(titulo, autor, anoPublicacion);
+        this.idDisco = idDisco;
         this.numPista = numPista;
         this.duracionDisco = duracionDisco;
+    }
+
+    public int getIdDisco() {
+        return idDisco;
+    }
+
+    public void setIdDisco(int idDisco) {
+        this.idDisco = idDisco;
     }
 
     public int getNumPista() {
@@ -27,12 +36,10 @@ public class DiscoVinilo extends Material{
 
     @Override
     public String toString() {
-        return "DiscoVinilo{" +
-                "numPista=" + numPista +
-                ", duracionDisco=" + duracionDisco +
-                ", titulo='" + titulo + '\'' +
+        return "titulo='" + titulo + '\'' +
                 ", autor='" + autor + '\'' +
-                ", anoPublicacion='" + anoPublicacion + '\'' +
-                '}';
+                ", numPista=" + numPista +
+                ", duracionDisco=" + duracionDisco +
+                ", anoPublicacion=" + anoPublicacion;
     }
 }
