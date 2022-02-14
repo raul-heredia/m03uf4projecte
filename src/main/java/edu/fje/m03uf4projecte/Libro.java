@@ -51,6 +51,19 @@ public class Libro extends Material{
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Libro)) return false;
+        Libro libro = (Libro) o;
+        return getISBN().equals(libro.getISBN());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getISBN());
+    }
+
+    @Override
     public String toString() {
         return  "ISBN='" + ISBN + '\'' +
                 ", genero=" + genero +

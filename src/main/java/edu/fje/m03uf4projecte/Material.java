@@ -1,6 +1,6 @@
 package edu.fje.m03uf4projecte;
 
-public abstract class Material {
+public abstract class Material implements Equals {
     protected String titulo, autor;
     int anoPublicacion;
 
