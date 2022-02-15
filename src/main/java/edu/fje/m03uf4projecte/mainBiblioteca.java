@@ -44,8 +44,13 @@ public class mainBiblioteca {
         //Disco Vinilo
         discosVinilo.add(new DiscoVinilo(1,"Los éxitos de Manolo Escobar", "Manolo Escobar", 1999, 15, 60));
         discosVinilo.add(new DiscoVinilo(2,"Greatest Hits I, II & III: The Platinum Collection - 3 Discos", "Queen", 2011, 51, 208));
+        discosVinilo.add(new DiscoVinilo(3,"Night Visions Ed Deluxe", "Imagine Dragons", 2013, 5, 40));
         // TRABAJADORES
         trabajadores.add(new Treballador("23745699Z","Killian",false, 1200F, clientes, libros, discosVinilo));
+        // RESERVA DISCO VINILO
+        reservaDiscosVinilo.add(new ReservaDV(1, "A67890098"));
+        ReservaDV.devolverDisco(clientes, reservaDiscosVinilo, "A67890098");
+
         // VARIABLES
         int op1=99,op2=99, op3=99, op4=99; // Declarados en 99 porque el que botón que permite salir es el 0
 

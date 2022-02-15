@@ -50,6 +50,10 @@ public class CPrivado extends Cliente{
         super.setCarnet(carnet);
     }
 
+    public void restarPuntos(int resta) {
+        super.restarPuntos(resta);
+    }
+
     public static void listarClienteDNI(ArrayList clientes, String id){
         Boolean notFound = true;
         for (int i = 0; i < clientes.size(); i++) {

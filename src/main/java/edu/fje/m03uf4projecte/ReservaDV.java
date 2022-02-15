@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 public class ReservaDV {
     private String idEscuela;
@@ -19,7 +20,7 @@ public class ReservaDV {
         // Data Final
         Calendar c = Calendar.getInstance();
         c.setTime(this.dataInic);
-        c.add(Calendar.DATE, 15);
+        c.add(Calendar.DATE, -15);
         this.dataFi = c.getTime();
 
     }
@@ -37,17 +38,36 @@ public class ReservaDV {
         this.idEscuela = idEscuela;
     }
 
+    public Date getDataInic() {
+        return dataInic;
+    }
+
+    public void setDataInic(Date dataInic) {
+        this.dataInic = dataInic;
+    }
+
+    public Date getDataFi() {
+        return dataFi;
+    }
+
+    public void setDataFi(Date dataFi) {
+        this.dataFi = dataFi;
+    }
+
     public static void prestarDiscoVinilo(ArrayList discosVinilo, ArrayList clientes, ArrayList reservaDiscosVinilo, int idDisco, String idEscuela){
-        Boolean isEscuela =false, isDisco =false, isPrestadoDisco = false, isEscuelaConPrestamo =false;
+        Boolean isEscuela =false, isDisco =false, isPrestadoDisco = false, isEscuelaConPrestamo =false, tienePuntos = false;
 
             // 4. Comprobar que la escuela no tiene nada en préstamo
                 // 5. Instanciar présamo y guardar en arraylist reservas.
 
-        // 1. Comprobar que existe escuela
+        // 1. Comprobar que existe escuela y en caso de que exista comprobar si tiene puntos de carnet.
         for (int i = 0; i < clientes.size(); i++) {
             if(clientes.get(i) instanceof CMusica){
                 if (((CMusica)clientes.get(i)).getIdEscola().equals(idEscuela)) {
                     isEscuela = true;
+                    if (((CMusica)clientes.get(i)).getCarnet() > 0){
+                        tienePuntos = true;
+                    }
                 }
             }
         }
@@ -59,7 +79,7 @@ public class ReservaDV {
                 }
             }
         }
-        if (isEscuela && isDisco){
+        if (isEscuela && isDisco && tienePuntos){
             for (int i = 0; i < reservaDiscosVinilo.size(); i++) {
                 if (((ReservaDV)reservaDiscosVinilo.get(i)).getIdDisco() == idDisco) {
                     isPrestadoDisco = true;
@@ -77,10 +97,35 @@ public class ReservaDV {
                 if(isEscuelaConPrestamo) System.out.println("Error, la escuela ya tiene un disco en prestamo");
             }
         }else{
+            if (!tienePuntos) System.out.println("Error, no quedan puntos en tu carnet, no puedes pedir ningún disco.");
             if(!isEscuela) System.out.println("Error, no existe ninguna escuela con ID: " + idEscuela);
             if(!isDisco) System.out.println("Error, no existe ningun disco con ID: " + idDisco);
         }
 }
+
+    public static void devolverDisco(ArrayList clientes,ArrayList reservaDiscosVinilo, String idEscuela){
+        for (int i = 0; i < reservaDiscosVinilo.size(); i++) {
+            if (((ReservaDV)reservaDiscosVinilo.get(i)).getIdEscuela().equals(idEscuela)) {
+                Date dataDevolucio = new Date();
+                long diferenciaMilesimas = ((ReservaDV) reservaDiscosVinilo.get(i)).getDataFi().getTime() - dataDevolucio.getTime();
+                int diferenciaDias = (int) TimeUnit.MILLISECONDS.toDays(diferenciaMilesimas);
+                if(diferenciaDias < 0){
+                    for (int c = 0; c < clientes.size(); c++) {
+                        if(clientes.get(c) instanceof CMusica){
+                            if (((CMusica)clientes.get(c)).getIdEscola().equals(idEscuela)) {
+                                int puntosResta = diferenciaDias * -1;
+                                ((CMusica) clientes.get(c)).restarPuntos(puntosResta);
+                            }
+                        }
+                    }
+                }
+                reservaDiscosVinilo.remove(i);
+                System.out.println("La devolución se ha completado con éxito");
+            }else{
+                System.out.println("La escuela con identificador " + idEscuela + " no tenía ningún disco reservado.");
+            }
+        }
+    }
 
     @Override
     public String toString() {
