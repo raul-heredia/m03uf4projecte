@@ -546,33 +546,34 @@ public class mainBiblioteca {
                         usuario = teclado.next();
                         System.out.print("contraseña: ");
                         password = teclado.next();
-                        if(!usuario.equals("admin") && !password.equals("admin")) {
+                        if(usuario.equals("admin") && password.equals("admin")) {
+                            System.out.println("---- Gestión de Trabajadores ----");
+                            System.out.println("1 - Listar Trabajadores");
+                            System.out.println("2 - Buscar Trabajador por DNI");
+                            System.out.println("3 - Añadir Trabajador");
+                            System.out.println("4 - Modificar Trabajador");
+                            System.out.println("5 - Eliminar Trabajador");
+                            System.out.println("0 - Volver Atrás");
+                            System.out.print("Introduce una opción: ");
+                            op2 = Integer.parseInt(teclado.next());
+                            if(op2 == 1){
+                                Iterator<Treballador> iteratorTrabajadores = trabajadores.iterator();
+                                while (iteratorTrabajadores.hasNext()) {
+                                    System.out.println(iteratorTrabajadores.next());
+                                }
+                                pressAnyKeyToContinue();
+                            }
+                            if(op2 == 2){
+                                String nif;
+                                System.out.print("Introduzca el DNI del Empleado a buscar: ");
+                                nif=teclado.next();
+                                Treballador.listarTrabajadorNIF(trabajadores, nif);
+                                pressAnyKeyToContinue();
+                            }
+                        }else{
                             System.out.println("Usuario y/o contraseña incorrectos");
                             pressAnyKeyToContinue();
-                            break;
-                        }
-                        System.out.println("---- Gestión de Trabajadores ----");
-                        System.out.println("1 - Listar Trabajadores");
-                        System.out.println("2 - Buscar Trabajador por DNI");
-                        System.out.println("3 - Añadir Trabajador");
-                        System.out.println("4 - Modificar Trabajador");
-                        System.out.println("5 - Eliminar Trabajador");
-                        System.out.println("0 - Volver Atrás");
-                        System.out.print("Introduce una opción: ");
-                        op2 = Integer.parseInt(teclado.next());
-                        if(op2 == 1){
-                            Iterator<Treballador> iteratorTrabajadores = trabajadores.iterator();
-                            while (iteratorTrabajadores.hasNext()) {
-                                System.out.println(iteratorTrabajadores.next());
-                            }
-                            pressAnyKeyToContinue();
-                        }
-                        if(op2 == 2){
-                            String nif;
-                            System.out.print("Introduzca el DNI del Empleado a buscar: ");
-                            nif=teclado.next();
-                            Treballador.listarTrabajadorNIF(trabajadores, nif);
-                            pressAnyKeyToContinue();
+                            op2 = 0;
                         }
                     }
                     break;
