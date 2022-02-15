@@ -54,6 +54,18 @@ public class ReservaDV {
         this.dataFi = dataFi;
     }
 
+    public static void comprobarEstadoDisco(ArrayList reservaDiscosVinilo, int idDisco){
+        Boolean notFound = true;
+        for (int i = 0; i < reservaDiscosVinilo.size(); i++) {
+            if(reservaDiscosVinilo.get(i) instanceof ReservaDV){
+                if (((ReservaDV)reservaDiscosVinilo.get(i)).getIdDisco() == idDisco) {
+                    notFound = false;
+                    System.out.println("El disco con ID " + idDisco + " se encuentra en préstamo actualmente");
+                }
+            }
+        }if (notFound) System.out.println("El disco con ID " + idDisco + " no se encuentra en préstamo actualmente");
+    }
+
     public static void prestarDiscoVinilo(ArrayList discosVinilo, ArrayList clientes, ArrayList reservaDiscosVinilo, int idDisco, String idEscuela){
         Boolean isEscuela =false, isDisco =false, isPrestadoDisco = false, isEscuelaConPrestamo =false, tienePuntos = false;
 

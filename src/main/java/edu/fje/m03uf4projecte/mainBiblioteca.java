@@ -577,21 +577,24 @@ public class mainBiblioteca {
                                         pressAnyKeyToContinue();
                                     }
                                     if (op4 == 2) {
-                                        // Devuelve si el disco está prestado o no
+                                        int idDisco;
+                                        System.out.print("Introduce el identificador del Disco a comprobar: ");
+                                        idDisco = teclado.nextInt();
+                                        ReservaDV.comprobarEstadoDisco(reservaDiscosVinilo, idDisco);
+                                        pressAnyKeyToContinue();
                                     }
                                     if (op4 == 3) {
                                         int idDisco;
                                         String idEscuela;
-                                        System.out.print("Introdueix el Identificador de la Escola: ");
+                                        System.out.print("Introduce el Identificador de la Escuela: ");
                                         idEscuela = teclado.next();
-                                        System.out.print("Introdueix el Identificador del Disc a prestar: ");
+                                        System.out.print("Introduce el Identificador del Disco a prestar: ");
                                         idDisco = teclado.nextInt();
                                         ReservaDV.prestarDiscoVinilo(discosVinilo, clientes, reservaDiscosVinilo, idDisco, idEscuela);
                                     }
                                     if (op4 == 4) {
-                                        int idDisco;
                                         String idEscuela;
-                                        System.out.print("Introdueix el Identificador de la Escola: ");
+                                        System.out.print("Introduce el Identificador de la Escuola: ");
                                         idEscuela = teclado.next();
                                         ReservaDV.devolverDisco(clientes, reservaDiscosVinilo, idEscuela);
                                     }
