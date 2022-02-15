@@ -49,7 +49,6 @@ public class mainBiblioteca {
         trabajadores.add(new Treballador("23745699Z","Killian",false, 1200F, clientes, libros, discosVinilo));
         // RESERVA DISCO VINILO
         reservaDiscosVinilo.add(new ReservaDV(1, "A67890098"));
-        ReservaDV.devolverDisco(clientes, reservaDiscosVinilo, "A67890098");
 
         // VARIABLES
         int op1=99,op2=99, op3=99, op4=99; // Declarados en 99 porque el que botón que permite salir es el 0
@@ -541,7 +540,7 @@ public class mainBiblioteca {
                         op3 = 99; //Reinicia el valor de op3!.
                         System.out.println("---- Gestión de Préstamos ----");
                         System.out.println("1 - Gestion de Prestamos de Libros");
-                        System.out.println("2 - Gestion de Prestamos de Libros");
+                        System.out.println("2 - Gestion de Prestamos de Audiolibros");
                         System.out.println("3 - Gestion de Prestamos de Discos de Vinilo");
                         System.out.println("0 - Volver Atrás");
                         System.out.print("Introduce una opción: ");
@@ -564,18 +563,21 @@ public class mainBiblioteca {
                                 while (op4 != 0) {
                                     System.out.println("---- Gestión de Préstamos de Discos de Vinilo ----");
                                     System.out.println("1 - Listar Discos de Vinilo prestados");
-                                    System.out.println("2 - Buscar Disco de Vinilo prestado por ISBN");
+                                    System.out.println("2 - Comprobar estado de Disco");
                                     System.out.println("3 - Prestar Disco de Vinilo");
                                     System.out.println("4 - Devolver Disco de Vinilo");
                                     System.out.println("0 - Volver Atrás");
                                     System.out.print("Introduce una opción: ");
-                                    op4=Integer.parseInt(teclado.next());
+                                    op4 = Integer.parseInt(teclado.next());
                                     if (op4 == 1) {
                                         Iterator<ReservaDV> iteratorReservaDV = reservaDiscosVinilo.iterator();
                                         while (iteratorReservaDV.hasNext()) {
                                             System.out.println(iteratorReservaDV.next());
                                         }
                                         pressAnyKeyToContinue();
+                                    }
+                                    if (op4 == 2) {
+                                        // Devuelve si el disco está prestado o no
                                     }
                                     if (op4 == 3) {
                                         int idDisco;
@@ -585,6 +587,13 @@ public class mainBiblioteca {
                                         System.out.print("Introdueix el Identificador del Disc a prestar: ");
                                         idDisco = teclado.nextInt();
                                         ReservaDV.prestarDiscoVinilo(discosVinilo, clientes, reservaDiscosVinilo, idDisco, idEscuela);
+                                    }
+                                    if (op4 == 4) {
+                                        int idDisco;
+                                        String idEscuela;
+                                        System.out.print("Introdueix el Identificador de la Escola: ");
+                                        idEscuela = teclado.next();
+                                        ReservaDV.devolverDisco(clientes, reservaDiscosVinilo, idEscuela);
                                     }
                                 }
                             }

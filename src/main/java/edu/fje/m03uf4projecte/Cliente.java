@@ -45,6 +45,6 @@ public class Cliente {
 
     public void restarPuntos(int resta){
         this.carnet -= resta;
-        System.out.println("Has perdido " + resta + " puntos. Actualmente te quedan " + this.carnet + " en tu carnet");
+        System.out.println("Disco devuelto con " + resta + " días de retraso. Has perdido " + resta + " puntos. Actualmente te quedan " + this.carnet + " puntos en tu carnet");
     }
 }
