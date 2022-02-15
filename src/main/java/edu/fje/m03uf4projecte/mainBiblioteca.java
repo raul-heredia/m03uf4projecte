@@ -20,6 +20,7 @@ public class mainBiblioteca {
         ArrayList<Libro> libros = new ArrayList<>();
         ArrayList<DiscoVinilo> discosVinilo = new ArrayList<>();
         ArrayList<Treballador> trabajadores = new ArrayList<>();
+        ArrayList<ReservaL> reservaLibros = new ArrayList<>();
         ArrayList<ReservaDV> reservaDiscosVinilo = new ArrayList<>();
         // Clientes Privados
         clientes.add(new CPrivado("Raúl Heredia Maza", "raul.heredia@outlook.com", "C/ Mallorca 666", "21651036Z"));
@@ -47,6 +48,9 @@ public class mainBiblioteca {
         discosVinilo.add(new DiscoVinilo(3,"Night Visions Ed Deluxe", "Imagine Dragons", 2013, 5, 40));
         // TRABAJADORES
         trabajadores.add(new Treballador("23745699Z","Killian",false, 1200F, clientes, libros, discosVinilo));
+        // RESERVA LIBROS
+        reservaLibros.add(new ReservaL("21651036Z", "9781524747158"));
+
         // RESERVA DISCO VINILO
         reservaDiscosVinilo.add(new ReservaDV(1, "A67890098"));
 
@@ -54,6 +58,7 @@ public class mainBiblioteca {
         int op1=99,op2=99, op3=99, op4=99; // Declarados en 99 porque el que botón que permite salir es el 0
 
         do {
+            op1 = 99; //Reinicia el valor de op1!.
             System.out.println("Bienvenido a la Biblioteca Terra Alta");
             System.out.println("¿Que desea Hacer?");
             System.out.println("1 - Gestionar Clientes");
@@ -196,18 +201,18 @@ public class mainBiblioteca {
                     }
                     break;
                 case 2:
-                    while (op3 != 0) {
-                        op3 = 99; //Reinicia el valor de op3!.
+                    while (op2 != 0) {
+                        op2 = 99; //Reinicia el valor de op3!.
                         System.out.println("Gestión de Material");
                         System.out.println("1 - Gestionar Libros");
                         System.out.println("2 - Gestionar Audiolibros");
                         System.out.println("3 - Gestionar Discos De Vinilo");
                         System.out.println("0 - Volver Atrás");
                         System.out.print("Introduce una opción: ");
-                        op3=Integer.parseInt(teclado.next());
-                        op4 = 99; //Reinicia el valor de op4!.
-                        if(op3 == 1){
-                            while(op4 != 0){
+                        op2=Integer.parseInt(teclado.next());
+                        op3 = 99; //Reinicia el valor de op4!.
+                        if(op2 == 1){
+                            while(op3 != 0){
                                 System.out.println("---- Gestión de Libros ----");
                                 System.out.println("1 - Listar Libros");
                                 System.out.println("1 - Buscar Libro por ISBN");
@@ -216,8 +221,8 @@ public class mainBiblioteca {
                                 System.out.println("5 - Eliminar Libro");
                                 System.out.println("0 - Volver Atrás");
                                 System.out.print("Introduce una opción: ");
-                                op4=Integer.parseInt(teclado.next());
-                                if(op4 == 1){
+                                op3=Integer.parseInt(teclado.next());
+                                if(op3 == 1){
                                     Iterator<Libro> libroIterator = libros.iterator();
                                     while (libroIterator.hasNext()){
                                         Libro libroTemp = libroIterator.next(); // Creamos un objeto temporal del iterador
@@ -227,14 +232,14 @@ public class mainBiblioteca {
                                     }
                                     pressAnyKeyToContinue();
                                 }
-                                if(op4 == 2){
+                                if(op3 == 2){
                                     String ISBN;
                                     System.out.print("Introduzca el ISBN del libro a buscar: ");
                                     ISBN=teclado.next();
                                     LPapel.listarLibroISBN(libros, ISBN);
                                     pressAnyKeyToContinue();
                                 }
-                                if(op4 == 3){
+                                if(op3 == 3){
                                     String titulo, autor, ISBN, fechaImpresion;
                                     int cantidadHojas,anoPublicacion;
                                     Genero genero;
@@ -273,7 +278,7 @@ public class mainBiblioteca {
                                     }
                                     pressAnyKeyToContinue();
                                 }
-                                if(op4 == 4){
+                                if(op3 == 4){
                                     String titulo, autor, ISBN, fechaImpresion;
                                     int cantidadHojas,anoPublicacion;
                                     Genero genero;
@@ -319,7 +324,7 @@ public class mainBiblioteca {
                                     LPapel.modificarLibro( libros,  titulo,  autor,  anoPublicacion,  ISBN,  genero,  fechaImpresion,  cantidadHojas);
                                     pressAnyKeyToContinue();
                                 }
-                                if(op4 == 5){
+                                if(op3 == 5){
                                     String ISBN;
                                     System.out.print("Introduzca el ISBN del libro a eliminar: ");
                                     ISBN=teclado.next();
@@ -328,8 +333,8 @@ public class mainBiblioteca {
                                 }
                             }
                         }
-                        if(op3 == 2){
-                            while(op4 != 0){
+                        if(op2 == 2){
+                            while(op3 != 0){
                                 System.out.println("---- Gestión de Audiolibros ----");
                                 System.out.println("1 - Listar Audiolibros");
                                 System.out.println("2 - Buscar Audiolibro por ISBN");
@@ -338,8 +343,8 @@ public class mainBiblioteca {
                                 System.out.println("5 - Eliminar Audiolibro");
                                 System.out.println("0 - Volver Atrás");
                                 System.out.print("Introduce una opción: ");
-                                op4=Integer.parseInt(teclado.next());
-                                if(op4 == 1){
+                                op3=Integer.parseInt(teclado.next());
+                                if(op3 == 1){
                                     Iterator<Libro> libroIterator = libros.iterator();
                                     while (libroIterator.hasNext()){
                                         Libro libroTemp = libroIterator.next(); // Creamos un objeto temporal del iterador
@@ -349,14 +354,14 @@ public class mainBiblioteca {
                                     }
                                     pressAnyKeyToContinue();
                                 }
-                                if(op4 == 2){
+                                if(op3 == 2){
                                     String ISBN;
                                     System.out.print("Introduzca el ISBN del Audiolibro a buscar: ");
                                     ISBN=teclado.next();
                                     AudioLibro.listarAudioLibroISBN(libros, ISBN);
                                     pressAnyKeyToContinue();
                                 }
-                                if(op4 == 3){
+                                if(op3 == 3){
                                     String titulo, autor, ISBN;
                                     int duracion,anoPublicacion;
                                     Genero genero;
@@ -394,7 +399,7 @@ public class mainBiblioteca {
                                     }
                                     pressAnyKeyToContinue();
                                 }
-                                if(op4 == 4){
+                                if(op3 == 4){
                                     String titulo, autor, ISBN;
                                     int duracion,anoPublicacion;
                                     Genero genero;
@@ -440,8 +445,8 @@ public class mainBiblioteca {
                                 }
                             }
                         }
-                        if(op3 == 3){
-                            while(op4 != 0) {
+                        if(op2 == 3){
+                            while(op3 != 0) {
                                 System.out.println("---- Gestión de Discos De Vinilo ----");
                                 System.out.println("1 - Listar Discos de Vinilo");
                                 System.out.println("2 - Buscar Disco de Vinilo por ID");
@@ -450,23 +455,23 @@ public class mainBiblioteca {
                                 System.out.println("5 - Eliminar Disco de Vinilo");
                                 System.out.println("0 - Volver Atrás");
                                 System.out.print("Introduce una opción: ");
-                                op4 = Integer.parseInt(teclado.next());
+                                op3 = Integer.parseInt(teclado.next());
 
-                                if (op4 == 1) {
+                                if (op3 == 1) {
                                     Iterator<DiscoVinilo> iteratorDiscoVinilo = discosVinilo.iterator();
                                     while (iteratorDiscoVinilo.hasNext()) {
                                         System.out.println(iteratorDiscoVinilo.next());
                                     }
                                     pressAnyKeyToContinue();
                                 }
-                                if(op4 == 2){
+                                if(op3 == 2){
                                     int id;
                                     System.out.print("Introduzca el ID del Disco de Vinilo a buscar: ");
                                     id=Integer.parseInt(teclado.next());
                                     DiscoVinilo.listarDiscoViniloId(discosVinilo, id);
                                     pressAnyKeyToContinue();
                                 }
-                                if(op4 == 3){
+                                if(op3 == 3){
                                     String titulo, autor;
                                     int idDisco, anoPublicacion, numPista, duracionDisco;
                                     System.out.print("Introduzca el Id del Disco: ");
@@ -489,7 +494,7 @@ public class mainBiblioteca {
                                     }
                                     pressAnyKeyToContinue();
                                 }
-                                if(op4 == 4){
+                                if(op3 == 4){
                                     String titulo, autor;
                                     int idDisco, anoPublicacion, numPista, duracionDisco;
                                     System.out.print("Introduzca el Id del Disco a modificar: ");
@@ -524,7 +529,7 @@ public class mainBiblioteca {
                                     }
                                     pressAnyKeyToContinue();
                                 }
-                                if(op4 == 5){
+                                if(op3 == 5){
                                     int id;
                                     System.out.print("Introduzca el ID del Disco de Vinilo a eliminar: ");
                                     id=Integer.parseInt(teclado.next());
@@ -536,18 +541,18 @@ public class mainBiblioteca {
                     }
                     break;
                 case 3:
-                    while (op3 != 0) {
-                        op3 = 99; //Reinicia el valor de op3!.
+                    while (op2 != 0) {
+                        op2 = 99; //Reinicia el valor de op3!.
                         System.out.println("---- Gestión de Préstamos ----");
                         System.out.println("1 - Gestion de Prestamos de Libros");
                         System.out.println("2 - Gestion de Prestamos de Audiolibros");
                         System.out.println("3 - Gestion de Prestamos de Discos de Vinilo");
                         System.out.println("0 - Volver Atrás");
                         System.out.print("Introduce una opción: ");
-                        op3=Integer.parseInt(teclado.next());
-                        op4 = 99; //Reinicia el valor de op4!.
-                            if(op3 == 1) {
-                                while (op4 != 0){
+                        op2=Integer.parseInt(teclado.next());
+                        op3 = 99; //Reinicia el valor de op4!.
+                            if(op2 == 1) {
+                                while (op3 != 0){
                                     System.out.println("---- Gestión de Préstamos de Libros ----");
                                     System.out.println("1 - Listar Libros prestados");
                                     System.out.println("2 - Buscar Libro prestado por ISBN");
@@ -556,11 +561,37 @@ public class mainBiblioteca {
                                     System.out.println("0 - Volver Atrás");
                                     System.out.print("Introduce una opción: ");
                                     op4=Integer.parseInt(teclado.next());
-
+                                    if (op3 == 1) {
+                                        Iterator<ReservaL> iteratorReservaL = reservaLibros.iterator();
+                                        while (iteratorReservaL.hasNext()) {
+                                            System.out.println(iteratorReservaL.next());
+                                        }
+                                        pressAnyKeyToContinue();
+                                    }
+                                    if (op3 == 2) {
+                                        String ISBN;
+                                        System.out.print("Introduce el ISBN del libro a comprobar: ");
+                                        ISBN = teclado.next();
+                                        ReservaL.comprobarEstadoLibro(reservaLibros, ISBN);
+                                        pressAnyKeyToContinue();
+                                    }
                                 }
                             }
-                            if(op3 == 3) {
-                                while (op4 != 0) {
+                        if(op2 == 2) {
+                            while (op3 != 0){
+                                System.out.println("---- Gestión de Préstamos de AudioLibros ----");
+                                System.out.println("1 - Listar Audiolibros prestados");
+                                System.out.println("2 - Comprobar estado de un Audiolibro");
+                                System.out.println("3 - Prestar Audiolibro");
+                                System.out.println("4 - Devolver Audiolibro");
+                                System.out.println("0 - Volver Atrás");
+                                System.out.print("Introduce una opción: ");
+                                op3=Integer.parseInt(teclado.next());
+
+                            }
+                        }
+                            if(op2 == 3) {
+                                while (op3 != 0) {
                                     System.out.println("---- Gestión de Préstamos de Discos de Vinilo ----");
                                     System.out.println("1 - Listar Discos de Vinilo prestados");
                                     System.out.println("2 - Comprobar estado de Disco");
@@ -568,22 +599,22 @@ public class mainBiblioteca {
                                     System.out.println("4 - Devolver Disco de Vinilo");
                                     System.out.println("0 - Volver Atrás");
                                     System.out.print("Introduce una opción: ");
-                                    op4 = Integer.parseInt(teclado.next());
-                                    if (op4 == 1) {
+                                    op3 = Integer.parseInt(teclado.next());
+                                    if (op3 == 1) {
                                         Iterator<ReservaDV> iteratorReservaDV = reservaDiscosVinilo.iterator();
                                         while (iteratorReservaDV.hasNext()) {
                                             System.out.println(iteratorReservaDV.next());
                                         }
                                         pressAnyKeyToContinue();
                                     }
-                                    if (op4 == 2) {
+                                    if (op3 == 2) {
                                         int idDisco;
                                         System.out.print("Introduce el identificador del Disco a comprobar: ");
                                         idDisco = teclado.nextInt();
                                         ReservaDV.comprobarEstadoDisco(reservaDiscosVinilo, idDisco);
                                         pressAnyKeyToContinue();
                                     }
-                                    if (op4 == 3) {
+                                    if (op3 == 3) {
                                         int idDisco;
                                         String idEscuela;
                                         System.out.print("Introduce el Identificador de la Escuela: ");
@@ -592,7 +623,7 @@ public class mainBiblioteca {
                                         idDisco = teclado.nextInt();
                                         ReservaDV.prestarDiscoVinilo(discosVinilo, clientes, reservaDiscosVinilo, idDisco, idEscuela);
                                     }
-                                    if (op4 == 4) {
+                                    if (op3 == 4) {
                                         String idEscuela;
                                         System.out.print("Introduce el Identificador de la Escuola: ");
                                         idEscuela = teclado.next();

@@ -20,7 +20,7 @@ public class ReservaDV {
         // Data Final
         Calendar c = Calendar.getInstance();
         c.setTime(this.dataInic);
-        c.add(Calendar.DATE, -15);
+        c.add(Calendar.DATE, 15);
         this.dataFi = c.getTime();
 
     }
@@ -69,9 +69,6 @@ public class ReservaDV {
     public static void prestarDiscoVinilo(ArrayList discosVinilo, ArrayList clientes, ArrayList reservaDiscosVinilo, int idDisco, String idEscuela){
         Boolean isEscuela =false, isDisco =false, isPrestadoDisco = false, isEscuelaConPrestamo =false, tienePuntos = false;
 
-            // 4. Comprobar que la escuela no tiene nada en préstamo
-                // 5. Instanciar présamo y guardar en arraylist reservas.
-
         // 1. Comprobar que existe escuela y en caso de que exista comprobar si tiene puntos de carnet.
         for (int i = 0; i < clientes.size(); i++) {
             if(clientes.get(i) instanceof CMusica){
@@ -92,16 +89,19 @@ public class ReservaDV {
             }
         }
         if (isEscuela && isDisco && tienePuntos){
+            // 3. Comprobar que el disco no está prestado
             for (int i = 0; i < reservaDiscosVinilo.size(); i++) {
                 if (((ReservaDV)reservaDiscosVinilo.get(i)).getIdDisco() == idDisco) {
                     isPrestadoDisco = true;
                 }
             }
+            // 4. Comprobar que la escuela no tiene nada en préstamo
             for (int i = 0; i < reservaDiscosVinilo.size(); i++) {
                 if (((ReservaDV)reservaDiscosVinilo.get(i)).getIdEscuela().equals(idEscuela)) {
                     isEscuelaConPrestamo = true;
                 }
             }
+            // 5. Instanciar préstamo y guardar en arraylist reservas.
             if(!isPrestadoDisco && !isEscuelaConPrestamo){
                 reservaDiscosVinilo.add(new ReservaDV(idDisco, idEscuela));
             }else{
