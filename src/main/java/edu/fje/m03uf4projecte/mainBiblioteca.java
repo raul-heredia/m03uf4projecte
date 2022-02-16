@@ -587,7 +587,7 @@ public class mainBiblioteca {
                                     String nif;
                                     System.out.print("Introduce el DNI del cliente: ");
                                     nif = teclado.next();
-                                    ReservaDV.devolverDisco(clientes, reservaLibros, nif);
+                                    ReservaL.devolverlibro(clientes, reservaLibros, nif);
                                 }
                             }
                         }
