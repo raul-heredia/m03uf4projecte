@@ -545,52 +545,52 @@ public class mainBiblioteca {
                         op2 = 99; //Reinicia el valor de op3!.
                         System.out.println("---- Gestión de Préstamos ----");
                         System.out.println("1 - Gestion de Prestamos de Libros");
-                        System.out.println("2 - Gestion de Prestamos de Audiolibros");
-                        System.out.println("3 - Gestion de Prestamos de Discos de Vinilo");
+                        System.out.println("2 - Gestion de Prestamos de Discos de Vinilo");
                         System.out.println("0 - Volver Atrás");
                         System.out.print("Introduce una opción: ");
-                        op2=Integer.parseInt(teclado.next());
+                        op2 = Integer.parseInt(teclado.next());
                         op3 = 99; //Reinicia el valor de op4!.
-                            if(op2 == 1) {
-                                while (op3 != 0){
-                                    System.out.println("---- Gestión de Préstamos de Libros ----");
-                                    System.out.println("1 - Listar Libros prestados");
-                                    System.out.println("2 - Buscar Libro prestado por ISBN");
-                                    System.out.println("3 - Prestar Libro");
-                                    System.out.println("4 - Devolver Libro");
-                                    System.out.println("0 - Volver Atrás");
-                                    System.out.print("Introduce una opción: ");
-                                    op4=Integer.parseInt(teclado.next());
-                                    if (op3 == 1) {
-                                        Iterator<ReservaL> iteratorReservaL = reservaLibros.iterator();
-                                        while (iteratorReservaL.hasNext()) {
-                                            System.out.println(iteratorReservaL.next());
-                                        }
-                                        pressAnyKeyToContinue();
-                                    }
-                                    if (op3 == 2) {
-                                        String ISBN;
-                                        System.out.print("Introduce el ISBN del libro a comprobar: ");
-                                        ISBN = teclado.next();
-                                        ReservaL.comprobarEstadoLibro(reservaLibros, ISBN);
-                                        pressAnyKeyToContinue();
-                                    }
-                                }
-                            }
-                        if(op2 == 2) {
-                            while (op3 != 0){
-                                System.out.println("---- Gestión de Préstamos de AudioLibros ----");
-                                System.out.println("1 - Listar Audiolibros prestados");
-                                System.out.println("2 - Comprobar estado de un Audiolibro");
-                                System.out.println("3 - Prestar Audiolibro");
-                                System.out.println("4 - Devolver Audiolibro");
+                        if (op2 == 1) {
+                            while (op3 != 0) {
+                                System.out.println("---- Gestión de Préstamos de Libros ----");
+                                System.out.println("1 - Listar Libros prestados");
+                                System.out.println("2 - Buscar Libro prestado por ISBN");
+                                System.out.println("3 - Prestar Libro");
+                                System.out.println("4 - Devolver Libro");
                                 System.out.println("0 - Volver Atrás");
                                 System.out.print("Introduce una opción: ");
-                                op3=Integer.parseInt(teclado.next());
-
+                                op4 = Integer.parseInt(teclado.next());
+                                if (op3 == 1) {
+                                    Iterator<ReservaL> iteratorReservaL = reservaLibros.iterator();
+                                    while (iteratorReservaL.hasNext()) {
+                                        System.out.println(iteratorReservaL.next());
+                                    }
+                                    pressAnyKeyToContinue();
+                                }
+                                if (op3 == 2) {
+                                    String ISBN;
+                                    System.out.print("Introduce el ISBN del libro a comprobar: ");
+                                    ISBN = teclado.next();
+                                    ReservaL.comprobarEstadoLibro(reservaLibros, ISBN);
+                                    pressAnyKeyToContinue();
+                                }
+                                if (op3 == 3) {
+                                    String ISBN, nif;
+                                    System.out.print("Introduce el DNI del cliente: ");
+                                    nif = teclado.next();
+                                    System.out.print("Introduce el ISBN del libro para prestar: ");
+                                    ISBN = teclado.next();
+                                    ReservaL.prestarLibro(libros, clientes, reservaLibros, ISBN, nif);
+                                    pressAnyKeyToContinue();
+                                }
+                                if (op3 == 4) {
+                                    String nif;
+                                    System.out.print("Introduce el DNI del cliente: ");
+                                    nif = teclado.next();
+                                    ReservaDV.devolverDisco(clientes, reservaLibros, nif);
+                                }
                             }
-                        }
-                            if(op2 == 3) {
+                            if (op2 == 2) {
                                 while (op3 != 0) {
                                     System.out.println("---- Gestión de Préstamos de Discos de Vinilo ----");
                                     System.out.println("1 - Listar Discos de Vinilo prestados");
@@ -625,14 +625,15 @@ public class mainBiblioteca {
                                     }
                                     if (op3 == 4) {
                                         String idEscuela;
-                                        System.out.print("Introduce el Identificador de la Escuola: ");
+                                        System.out.print("Introduce el Identificador de la Escuela: ");
                                         idEscuela = teclado.next();
                                         ReservaDV.devolverDisco(clientes, reservaDiscosVinilo, idEscuela);
                                     }
                                 }
                             }
                         }
-                    break;
+                        break;
+                    }
                 case 4:
                     while(op2 != 0){
                         String usuario, password;
