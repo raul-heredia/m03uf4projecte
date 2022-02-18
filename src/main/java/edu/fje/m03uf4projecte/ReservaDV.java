@@ -7,11 +7,28 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Clase para instanciar objetos de Reservas de Discos de Vinilo
+ */
 public class ReservaDV {
+    /**
+     * Propiedad para poner el Identificador de la Escuela que realiza la reserva
+     */
     private String idEscuela;
+    /**
+     * Propiedad integer para introducir el ID del Disco que se quiere prestar
+     */
     private int idDisco;
+    /**
+     * Propiedad de tipo Date para establecer las fechas de Inicio y Fin
+     */
     private Date dataInic, dataFi;
 
+    /**
+     * Metodo constructor para crear la reserva
+     * @param idDisco Id del disco que quieres reservar
+     * @param idEscuela Id de la escuela que quiere realizar la Reserva
+     */
     public ReservaDV(int idDisco, String idEscuela) {
         this.idDisco = idDisco;
         this.idEscuela = idEscuela;
@@ -25,35 +42,75 @@ public class ReservaDV {
 
     }
 
+    /**
+     * Getter de la propiedad idDisco
+     * @return int idDisco
+     */
     public int getIdDisco() {
         return idDisco;
     }
+
+    /**
+     * Setter de la propiedad idDisco
+     * @param idDisco Establece el id del Disco de Vinilo
+     */
     public void setIdDisco(int idDisco) {
         this.idDisco = idDisco;
     }
+
+    /**
+     * Getter de la propiedad
+     * @return String idEscuela
+     */
     public String getIdEscuela() {
         return idEscuela;
     }
+
+    /**
+     * Setter de la propiedad idEscuela
+     * @param idEscuela Establece el ID de la escuela
+     */
     public void setIdEscuela(String idEscuela) {
         this.idEscuela = idEscuela;
     }
 
+    /**
+     * Getter de la propiedad Data Inici
+     * @return Date dataInic
+     */
     public Date getDataInic() {
         return dataInic;
     }
 
+    /**
+     * Setter de la propiedad Data Inici
+     * @param dataInic Establece la Data inicial del prestamo
+     */
     public void setDataInic(Date dataInic) {
         this.dataInic = dataInic;
     }
 
+    /**
+     * Getter de la propiedad Data Fi
+     * @return Date dataFi
+     */
     public Date getDataFi() {
         return dataFi;
     }
 
+    /**
+     * Setter de la propiedad Data Fi
+     * @param dataFi Establece la data Fi del prestamo
+     */
     public void setDataFi(Date dataFi) {
         this.dataFi = dataFi;
     }
 
+    /**
+     * Funcion para comprovar si un disco esta prestado
+     * @param reservaDiscosVinilo Mira el arraylist de discos vinilo
+     * @param idDisco Comprueba con el id del disco si esta prestado
+     */
     public static void comprobarEstadoDisco(ArrayList reservaDiscosVinilo, int idDisco){
         Boolean notFound = true;
         for (int i = 0; i < reservaDiscosVinilo.size(); i++) {
@@ -66,6 +123,14 @@ public class ReservaDV {
         }if (notFound) System.out.println("El disco con ID " + idDisco + " no se encuentra en préstamo actualmente");
     }
 
+    /**
+     * Funcion para prestar Un disco
+     * @param discosVinilo Arraylist de los Discos
+     * @param clientes Arraylist de los clientes
+     * @param reservaDiscosVinilo ArrayList de Reservas de Discos de Vinilo
+     * @param idDisco Id del disco que deseas prestar
+     * @param idEscuela Id de la escuela que desea realizar el prestamo
+     */
     public static void prestarDiscoVinilo(ArrayList discosVinilo, ArrayList clientes, ArrayList reservaDiscosVinilo, int idDisco, String idEscuela){
         Boolean isEscuela =false, isDisco =false, isPrestadoDisco = false, isEscuelaConPrestamo =false, tienePuntos = false;
 
@@ -115,6 +180,12 @@ public class ReservaDV {
         }
 }
 
+    /**
+     * Funcion para Devolver el prestamo de un Disco
+     * @param clientes Arraylist de clientes
+     * @param reservaDiscosVinilo ArrayList de reservas de Discos
+     * @param idEscuela Id de la escuela que devuelve el libro
+     */
     public static void devolverDisco(ArrayList clientes,ArrayList reservaDiscosVinilo, String idEscuela){
         for (int i = 0; i < reservaDiscosVinilo.size(); i++) {
             if (((ReservaDV)reservaDiscosVinilo.get(i)).getIdEscuela().equals(idEscuela)) {

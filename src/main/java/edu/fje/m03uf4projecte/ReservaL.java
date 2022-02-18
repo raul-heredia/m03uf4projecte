@@ -5,10 +5,24 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Clase para la Reserva de Libros
+ */
 public class ReservaL {
+    /**
+     * Propiedades para establecer el DNI y el ISBN del cliente y libro del prestamo
+     */
     private String nif, ISBN;
+    /**
+     * Propiedades para establecer las fechas del prestamo
+     */
     private Date dataInic, dataFi;
 
+    /**
+     * Constructor de la clase
+     * @param nif NIF del usuario que realiza el prestamo
+     * @param ISBN  ISBN del libro que desea prestar
+     */
     public ReservaL(String nif, String ISBN) {
         this.nif = nif;
         this.ISBN = ISBN;
@@ -22,38 +36,75 @@ public class ReservaL {
 
     }
 
+    /**
+     * Getter del NIF
+     * @return String  nif
+     */
     public String getNif() {
         return nif;
     }
 
+    /**
+     * Setter del nif
+     * @param nif Establece el nif del cliente
+     */
     public void setNif(String nif) {
         this.nif = nif;
     }
 
+    /**
+     * Getter del ISBN
+     * @return String ISBN
+     */
     public String getISBN() {
         return ISBN;
     }
 
+    /**
+     * Setter de la propiedad ISBN
+     * @param ISBN ISBN del libro que prestas
+     */
     public void setISBN(String ISBN) {
         this.ISBN = ISBN;
     }
 
+    /**
+     * Getter de Data inici
+     * @return Date dataInic
+     */
     public Date getDataInic() {
         return dataInic;
     }
 
+    /**
+     * Setter de Data Inic
+     * @param dataInic Establece el Data Inic
+     */
     public void setDataInic(Date dataInic) {
         this.dataInic = dataInic;
     }
 
+    /**
+     * Gette de Data Fi
+     * @return Date dataFi
+     */
     public Date getDataFi() {
         return dataFi;
     }
 
+    /**
+     * Setter Data Fi
+     * @param dataFi Establece el Data Fi
+     */
     public void setDataFi(Date dataFi) {
         this.dataFi = dataFi;
     }
 
+    /**
+     * Funcion para comprovar si un libro esta prestado
+     * @param reservaLibros Mira el arraylist de libros
+     * @param ISBN Comprueba con el id del libro si esta prestado
+     */
     public static void comprobarEstadoLibro(ArrayList reservaLibros, String ISBN){
         Boolean notFound = true;
         for (int i = 0; i < reservaLibros.size(); i++) {
@@ -66,6 +117,14 @@ public class ReservaL {
         }if (notFound) System.out.println("El libro con ISBN " + ISBN + " no se encuentra en préstamo actualmente");
     }
 
+    /**
+     * Funcion para prestar un libro
+     * @param libros ArrayList de libros
+     * @param clientes ArrayList de clientes
+     * @param reservaLibros ArrayList de Reserva de Libros
+     * @param ISBN  ISBN del libro que desea prestar
+     * @param nif   NIF del usuario que quiere realizar el prestamo
+     */
     public static void prestarLibro(ArrayList libros, ArrayList clientes, ArrayList reservaLibros, String ISBN, String nif){
         Boolean isUsuario =false, isLibro =false, isPrestadoLibro = false, isUsuarioConPrestamo =false, tienePuntos = false, isLibroPapel = false, isAudioLibro = false;
         // 1. Comprobar que existe escuela y en caso de que exista comprobar si tiene puntos de carnet.
@@ -111,12 +170,18 @@ public class ReservaL {
                 if(isUsuarioConPrestamo) System.out.println("Error, el usuario ya tiene un libro en prestamo");
             }
         }else{
-            if (!tienePuntos) System.out.println("Error, no quedan puntos en tu carnet, no puedes pedir ningún disco.");
+            if (!tienePuntos) System.out.println("Error, no quedan puntos en tu carnet, no puedes pedir ningún libro.");
             if(!isUsuario) System.out.println("Error, no existe ningú usuario con DNI: " + nif);
             if(!isLibro) System.out.println("Error, no existe ningun Libro ni AudioLibro con ISBN: " + ISBN);
         }
     }
 
+    /**
+     * Funcion para devolver el prestamo de un lirbo
+     * @param clientes ArrayList de Clientes
+     * @param reservaLibros Arraylist de reserva de libros
+     * @param nif   Nif del usuario que realiza la devolucion del prestamo
+     */
     public static void devolverlibro(ArrayList clientes,ArrayList reservaLibros, String nif){
         for (int i = 0; i < reservaLibros.size(); i++) {
             if (((ReservaL)reservaLibros.get(i)).getNif().equals(nif)) {
@@ -136,7 +201,7 @@ public class ReservaL {
                 reservaLibros.remove(i);
                 System.out.println("La devolución se ha completado con éxito");
             }else{
-                System.out.println("El cliente con identificador " + nif + " no tenía ningún disco reservado.");
+                System.out.println("El cliente con identificador " + nif + " no tenía ningún libro reservado.");
             }
         }
     }

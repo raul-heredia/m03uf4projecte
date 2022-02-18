@@ -7,6 +7,9 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Clase para crear la Aplicacion de JavaFX de la libreria
+ */
 public class BibliotecaApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
@@ -17,6 +20,10 @@ public class BibliotecaApplication extends Application {
         stage.show();
     }
 
+    /**
+     * Funcion para JavaFX
+     * @param args argumentos de la funcion
+     */
     public static void main(String[] args) {
         launch();
     }

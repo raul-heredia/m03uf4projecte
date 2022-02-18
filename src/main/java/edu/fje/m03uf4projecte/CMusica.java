@@ -2,18 +2,39 @@ package edu.fje.m03uf4projecte;
 
 import java.util.ArrayList;
 
+/**
+ * Clase para Escuelas de Musica que hereda de clase Cliente
+ */
 public class CMusica extends Cliente{
+    /**
+     * Propiedad para tener un identificador de la Escuela
+     */
     private String idEscola;
 
+    /**
+     * Constructor de la clase CMusica
+     * @param nombre Nombre de la Escuela
+     * @param email Correo Electronico de la escuela
+     * @param direccion Direccion Fisica de la escuela
+     * @param idEscola Identificador de la escuela
+     */
     public CMusica(String nombre, String email, String direccion, String idEscola) {
         super(nombre, email, direccion);
         this.idEscola = idEscola;
     }
 
+    /**
+     * Getter de la propiedad IdEscola
+     * @return String IdEscola
+     */
     public String getIdEscola() {
         return idEscola;
     }
 
+    /**
+     * Setter de la propiedad IdEscola
+     * @param idEscola Establece el identificador de la escuela
+     */
     public void setIdEscola(String idEscola) {
         this.idEscola = idEscola;
     }
@@ -54,7 +75,11 @@ public class CMusica extends Cliente{
         super.restarPuntos(resta);
     }
 
-
+    /**
+     * Funcion la listar todas las Escuelas, pueden buscarse todas o solo una
+     * @param clientes ArrayList con todos los clientes de la libreria
+     * @param id Identificador de la Escuela que quieras buscar
+     */
     public static void listarEscuelaId(ArrayList clientes, String id){
         Boolean notFound = true;
         for (int i = 0; i < clientes.size(); i++) {
@@ -68,6 +93,14 @@ public class CMusica extends Cliente{
         if (notFound) System.out.println("Error, no se ha encontrado ninguna Escuela con Identificador: " + id);
     }
 
+    /**
+     * Funcion para modificar una Escuela, busca a traves de su ID
+     * @param clientes Arralist con todos los clientes
+     * @param nombre Nuevo nombre para la Escuela
+     * @param email Nuevo email para la Escuela
+     * @param direccion Nueva direccion para la Escuela
+     * @param id Nuevo ID para la Escuela
+     */
     public static void modificarEscuela(ArrayList clientes, String nombre, String email, String direccion, String id){
         Boolean notFound = true;
         for (int i = 0; i < clientes.size(); i++) {
@@ -84,6 +117,11 @@ public class CMusica extends Cliente{
         if (notFound) System.out.println("Error, no se ha encontrado ninguna escuela con Identificaodr: " + id);
     }
 
+    /**
+     * Funcion para eliminar una Escuela
+     * @param clientes Arralist con todos los clientes
+     * @param id ID de la escuela que quieras eliminar
+     */
     public static void eliminarEscuela(ArrayList clientes, String id){
         Boolean notFound = true;
         for (int i = 0; i < clientes.size(); i++) {

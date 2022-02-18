@@ -6,13 +6,25 @@ import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * Clase Main donde se desplega la aplicacion con sus menus
+ */
 public class mainBiblioteca {
+    /**
+     * Funcion para que despues de realizar una accion del menu espere a que le des al enter para continuar
+     */
     public static void pressAnyKeyToContinue(){
         System.out.print("Presiona Enter Tecla Para Continuar...");
         try{
             System.in.read();
         } catch(Exception e){}
     }
+
+    /**
+     * Funcion Prinicpal
+     * @param args Argumentos de la funcion
+     * @throws ParseException Controlador de Excepciones
+     */
     public static void main(String[] args) throws ParseException {
         Scanner teclado=new Scanner(System.in).useDelimiter("\n");
         // ARRAYLIST
@@ -665,6 +677,52 @@ public class mainBiblioteca {
                                 Treballador.listarTrabajadorNIF(trabajadores, nif);
                                 pressAnyKeyToContinue();
                             }
+                            if(op2 == 3){
+                                String nombre, nif;
+                                float salario;
+                                System.out.print("Introduzca el nombre del trabajador: ");
+                                nombre=teclado.next();
+                                System.out.print("Introduzca el DNI del trabajador: ");
+                                nif=teclado.next();
+                                System.out.print("Introduzca el salario del trabajador: ");
+                                try{
+                                    salario=teclado.nextFloat();
+                                }catch(Exception e){
+                                    salario = 1000;
+                                }
+                                try{
+                                    trabajadores.add(new Treballador(nif,nombre,false, salario, clientes, libros, discosVinilo));
+                                    System.out.println("Trabajador añadido");
+                                }catch(Exception e){
+                                    System.out.println("Error: No se ha añadido el Trabajador");
+                                }
+                                pressAnyKeyToContinue();
+                            }
+                            if(op2 == 4){
+                                String nombre, nif;
+                                float salario;
+                                System.out.print("Introduzca el DNI del Trabajador a modificar: ");
+                                nif=teclado.next();
+                                System.out.print("Introduzca el nuevo nombre del Trabajador [Dejar en blanco para no modificar]: ");
+                                nombre=teclado.next();
+                                System.out.print("Introduzca el nuevo salario del Trabajador [Dejar en blanco para no modificar]: ");
+                                try{
+                                    salario=teclado.nextFloat();
+                                }catch(Exception e){
+                                    salario = 0;
+                                }
+                                Treballador.modificarTrabajador(trabajadores, nif, nombre, false, salario);
+                                pressAnyKeyToContinue();
+                            }
+                            if(op2 == 5){
+                                String nombre, nif;
+                                float salario;
+                                System.out.print("Introduzca el DNI del Trabajador a eliminar: ");
+                                nif=teclado.next();
+                                Treballador.eliminarTrabajador(trabajadores, nif);
+                                pressAnyKeyToContinue();
+                            }
+
                         }else{
                             System.out.println("Usuario y/o contraseña incorrectos");
                             pressAnyKeyToContinue();
@@ -672,6 +730,9 @@ public class mainBiblioteca {
                         }
                     }
                     break;
+                default:
+                    System.out.println("Selecciona una opción válida");
+                    pressAnyKeyToContinue();
             }
         } while (op1!=0);
     }
