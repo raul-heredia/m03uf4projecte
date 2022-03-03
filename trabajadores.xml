@@ -1,0 +1,8 @@
+<Trabajadores>
+    <Trabajador>
+        <Identificador>23745699Z</Identificador>
+        <Nombre>Killian</Nombre>
+        <isAdmin>false</isAdmin>
+        <Salario>1200F</Salario>
+    </Trabajador>
+</Trabajadores>

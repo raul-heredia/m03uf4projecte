@@ -1,0 +1,44 @@
+<Clientes>
+    <Cliente>
+        <Tipo>CPrivado</Tipo>
+        <Nombre>Raúl Heredia Maza</Nombre>
+        <Correo>raul.heredia@outlook.com</Correo>
+        <Direccion>C/ Mallorca 666</Direccion>
+        <Identificador>21651036Z</Identificador>
+    </Cliente>
+    <Cliente>
+        <Tipo>CPrivado</Tipo>
+        <Nombre>Marc Carbonell Sariola</Nombre>
+        <Correo>marc.carbonell@outlook.com</Correo>
+        <Direccion>C/ Pixapins 420</Direccion>
+        <Identificador>21007891C</Identificador>
+    </Cliente>
+    <Cliente>
+        <Tipo>CPrivado</Tipo>
+        <Nombre>Juan Martínez Alonso</Nombre>
+        <Correo>juan.martinez@gmail.com</Correo>
+        <Direccion>C/ Sant Andreu 33</Direccion>
+        <Identificador>76120965X</Identificador>
+    </Cliente>
+    <Cliente>
+        <Tipo>CMusica</Tipo>
+        <Nombre>Jesuïtes El Clot</Nombre>
+        <Correo>hello.clot@fje.edu</Correo>
+        <Direccion>C/ Valencia 680</Direccion>
+        <Identificador>A67890098</Identificador>
+    </Cliente>
+    <Cliente>
+        <Tipo>CMusica</Tipo>
+        <Nombre>Escola Musical del Clot</Nombre>
+        <Correo>escola.musical@musiccclot.edu</Correo>
+        <Direccion>C/ Clot 12</Direccion>
+        <Identificador>L77917632</Identificador>
+    </Cliente>
+    <Cliente>
+        <Tipo>CMusica</Tipo>
+        <Nombre>Escola De Música de Barcelona</Nombre>
+        <Correo>hello.musicbarcelona@barcelonamusical.edu</Correo>
+        <Direccion>AV/ Meridiana 396</Direccion>
+        <Identificador>A56982014</Identificador>
+    </Cliente>
+</Clientes>
