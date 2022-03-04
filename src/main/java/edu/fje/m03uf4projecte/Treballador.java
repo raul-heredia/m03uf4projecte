@@ -2,6 +2,7 @@ package edu.fje.m03uf4projecte;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.concurrent.TransferQueue;
 
 /**
@@ -174,7 +175,7 @@ public class Treballador {
      * @param treballadors ArrayList de trabajadores
      * @param nif Nif del trabjador que desea buscar
      */
-    public static void listarTrabajadorNIF(ArrayList treballadors, String nif){
+    public static void listarTrabajadorNIF(LinkedList treballadors, String nif){
         Boolean notFound = true;
         for (int i = 0; i < treballadors.size(); i++) {
             if(treballadors.get(i) instanceof Treballador){
@@ -195,7 +196,7 @@ public class Treballador {
      * @param isAdmin Nuevo isAdmin del trabajador
      * @param salario Nuevo Salario del trabajador
      */
-    public static void modificarTrabajador(ArrayList treballadors, String nif, String nombre, Boolean isAdmin, Float salario){
+    public static void modificarTrabajador(LinkedList treballadors, String nif, String nombre, Boolean isAdmin, Float salario){
         Boolean notFound = true;
         for (int i = 0; i < treballadors.size(); i++) {
             if(treballadors.get(i) instanceof Treballador){
@@ -217,7 +218,7 @@ public class Treballador {
      * @param treballadors ArraList de trabajadores
      * @param nif Nif del trabajador que desea borrar
      */
-    public static void eliminarTrabajador(ArrayList treballadors, String nif){
+    public static void eliminarTrabajador(LinkedList treballadors, String nif){
         Boolean notFound = true;
         for (int i = 0; i < treballadors.size(); i++) {
             if(treballadors.get(i) instanceof Treballador){

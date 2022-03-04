@@ -5,7 +5,7 @@
         <Autor>Lorenzo Silva</Autor>
         <AnyPublicacion>2016</AnyPublicacion>
         <ISBN>9788423351039</ISBN>
-        <Genero>Genero.Thriller</Genero>
+        <Genero>Thriller</Genero>
         <FechaImpresion>02/10/2016</FechaImpresion>
         <NumeroPaginas>352</NumeroPaginas>
     </Libro>
@@ -15,7 +15,7 @@
         <Autor>Noah Gordon</Autor>
         <AnyPublicacion>2013</AnyPublicacion>
         <ISBN>9780449214268</ISBN>
-        <Genero>Genero.Aventura</Genero>
+        <Genero>Aventura</Genero>
         <FechaImpresion>15/04/2013</FechaImpresion>
         <NumeroPaginas>608</NumeroPaginas>
     </Libro>
@@ -25,7 +25,7 @@
         <Autor>Nicholas Sparks</Autor>
         <AnyPublicacion>1996</AnyPublicacion>
         <ISBN>9780446520805</ISBN>
-        <Genero>Genero.Ficcion</Genero>
+        <Genero>Ficcion</Genero>
         <FechaImpresion>22/07/1997</FechaImpresion>
         <NumeroPaginas>224</NumeroPaginas>
     </Libro>
@@ -35,7 +35,7 @@
         <Autor>León Tolstói</Autor>
         <AnyPublicacion>1867</AnyPublicacion>
         <ISBN>9780192833983</ISBN>
-        <Genero>Genero.Novela</Genero>
+        <Genero>Novela</Genero>
         <FechaImpresion>21/02/1995</FechaImpresion>
         <NumeroPaginas>1900</NumeroPaginas>
     </Libro>
@@ -45,7 +45,7 @@
         <Autor>León Tolstói</Autor>
         <AnyPublicacion>1878</AnyPublicacion>
         <ISBN>9780142000274</ISBN>
-        <Genero>Genero.Novela</Genero>
+        <Genero>Novela</Genero>
         <FechaImpresion>23/10/2000</FechaImpresion>
         <NumeroPaginas>1040</NumeroPaginas>
     </Libro>
@@ -55,7 +55,7 @@
         <Autor>Albert Camus</Autor>
         <AnyPublicacion>1947</AnyPublicacion>
         <ISBN>9780394440613</ISBN>
-        <Genero>Genero.Novela</Genero>
+        <Genero>Novela</Genero>
         <FechaImpresion>15/05/1988</FechaImpresion>
         <NumeroPaginas>360</NumeroPaginas>
     </Libro>
@@ -65,7 +65,7 @@
         <Autor>Albert Camus</Autor>
         <AnyPublicacion>1942</AnyPublicacion>
         <ISBN>9780812416695</ISBN>
-        <Genero>Genero.Novela</Genero>
+        <Genero>Novela</Genero>
         <FechaImpresion>28/02/1946</FechaImpresion>
         <NumeroPaginas>123</NumeroPaginas>
     </Libro>
@@ -75,7 +75,7 @@
         <Autor>Leonardo Padura</Autor>
         <AnyPublicacion>2013</AnyPublicacion>
         <ISBN>9786074214666</ISBN>
-        <Genero>Genero.Suspense</Genero>
+        <Genero>Suspense</Genero>
         <FechaImpresion>05/03/2013</FechaImpresion>
         <NumeroPaginas>520</NumeroPaginas>
     </Libro>
@@ -85,7 +85,7 @@
         <Autor>Fernando Aramburu</Autor>
         <AnyPublicacion>2016</AnyPublicacion>
         <ISBN>9781524747121</ISBN>
-        <Genero>Genero.Thriller</Genero>
+        <Genero>Thriller</Genero>
         <FechaImpresion>05/09/2017</FechaImpresion>
         <NumeroPaginas>646</NumeroPaginas>
     </Libro>
@@ -95,7 +95,7 @@
         <Autor>Fernando Aramburu</Autor>
         <AnyPublicacion>2019</AnyPublicacion>
         <ISBN>9781524747158</ISBN>
-        <Genero>Genero.Thriller</Genero>
+        <Genero>Thriller</Genero>
         <Duracion>3</Duracion>
     </Libro>
 </Libros>

@@ -5,4 +5,16 @@
         <isAdmin>false</isAdmin>
         <Salario>1200F</Salario>
     </Trabajador>
+    <Trabajador>
+        <Identificador>25978966L</Identificador>
+        <Nombre>Pedri</Nombre>
+        <isAdmin>true</isAdmin>
+        <Salario>2000F</Salario>
+    </Trabajador>
+    <Trabajador>
+        <Identificador>45878966D</Identificador>
+        <Nombre>Riqui</Nombre>
+        <isAdmin>false</isAdmin>
+        <Salario>800F</Salario>
+    </Trabajador>
 </Trabajadores>

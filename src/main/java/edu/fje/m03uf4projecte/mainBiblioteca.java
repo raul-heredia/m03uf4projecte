@@ -1,10 +1,7 @@
 package edu.fje.m03uf4projecte;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Clase Main donde se desplega la aplicacion con sus menus
@@ -31,29 +28,20 @@ public class mainBiblioteca {
         ArrayList<Cliente> clientes = new ArrayList<>();
         ArrayList<Libro> libros = new ArrayList<>();
         ArrayList<DiscoVinilo> discosVinilo = new ArrayList<>();
-        ArrayList<Treballador> trabajadores = new ArrayList<>();
+        LinkedList<Treballador> trabajadores = new LinkedList<>();
         ArrayList<ReservaL> reservaLibros = new ArrayList<>();
         ArrayList<ReservaDV> reservaDiscosVinilo = new ArrayList<>();
-        // Clientes Privados
-        clientes.add(new CPrivado("Raúl Heredia Maza", "raul.heredia@outlook.com", "C/ Mallorca 666", "21651036Z"));
-        clientes.add(new CPrivado("Marc Carbonell Sariola", "marc.carbonell@outlook.com", "C/ Pixapins 420", "21007891C"));
-        clientes.add(new CPrivado("Juan Martínez Alonso", "juan.martinez@gmail.com", "C/ Sant Andreu 33", "76120965X"));
-        // Escuelas de musica
-        clientes.add(new CMusica("Jesuïtes El Clot", "hello.clot@fje.edu", "C/ Valencia 680", "A67890098"));
-        clientes.add(new CMusica("Escola Musical del Clot", "escola.musical@musiccclot.edu", "C/ Clot 12", "L77917632"));
-        clientes.add(new CMusica("Escola De Música de Barcelona", "hello.musicbarcelona@barcelonamusical.edu", "AV/ Meridiana 396", "A56982014"));
-        // Libros
-        libros.add(new LPapel( "Donde Los Escorpiones", "Lorenzo Silva", 2016, "9788423351039", Genero.Thriller,"02/10/2016", 352));
-        libros.add(new LPapel( "El Medico", "Noah Gordon", 2013, "9780449214268", Genero.Aventura,"15/04/2013", 608));
-        libros.add(new LPapel( "El Cuaderno de Noah", "Nicholas Sparks", 1996, "9780446520805", Genero.Ficcion,"22/07/1997", 224));
-        libros.add(new LPapel( "Guerra y paz", "León Tolstói", 1867, "9780192833983", Genero.Novela,"21/02/1995", 1900));
-        libros.add(new LPapel( "Ana Karenina", "León Tolstói", 1878, "9780142000274", Genero.Novela,"23/10/2000", 1040));
-        libros.add(new LPapel( "La peste", "Albert Camus", 1947, "9780394440613", Genero.Novela,"15/05/1988", 360));
-        libros.add(new LPapel( "El extranjero", "Albert Camus", 1942, "9780812416695", Genero.Novela,"28/02/1946", 123));
-        libros.add(new LPapel( "Herejes", "Leonardo Padura", 2013, "9786074214666", Genero.Suspense,"05/03/2013", 520));
-        libros.add(new LPapel( "Patria", "Fernando Aramburu", 2016, "9781524747121", Genero.Thriller,"05/09/2017", 646));
-        // Audio Libros
-        libros.add(new AudioLibro("Patria", "Fernando Aramburu", 2019, "9781524747158",Genero.Thriller,3));
+
+        // Cargar datos en listas
+        clientes.addAll(CargarXML.cargarClientes());
+        libros.addAll(CargarXML.cargarLibros());
+        discosVinilo.addAll(CargarXML.cargarVinilos());
+        trabajadores.addAll(CargarXML.cargarTrabajadores(clientes,libros, discosVinilo));
+        discosVinilo.addAll(CargarXML.cargarVinilos());
+        reservaLibros.addAll(CargarXML.cargarReservasLibros());
+        reservaDiscosVinilo.addAll(CargarXML.cargarReservasVinilo());
+        System.out.printf(reservaDiscosVinilo.toString());
+
         //Disco Vinilo
         discosVinilo.add(new DiscoVinilo(1,"Los éxitos de Manolo Escobar", "Manolo Escobar", 1999, 15, 60));
         discosVinilo.add(new DiscoVinilo(2,"Greatest Hits I, II & III: The Platinum Collection - 3 Discos", "Queen", 2011, 51, 208));
@@ -61,7 +49,7 @@ public class mainBiblioteca {
         // TRABAJADORES
         trabajadores.add(new Treballador("23745699Z","Killian",false, 1200F, clientes, libros, discosVinilo));
         // RESERVA LIBROS
-        reservaLibros.add(new ReservaL("21651036Z", "9781524747158"));
+        //reservaLibros.add(new ReservaL("21651036Z", "9781524747158"));
 
         // RESERVA DISCO VINILO
         reservaDiscosVinilo.add(new ReservaDV(1, "A67890098"));
@@ -76,7 +64,7 @@ public class mainBiblioteca {
             System.out.println("1 - Gestionar Clientes");
             System.out.println("2 - Gestionar Material");
             System.out.println("3 - Préstamos");
-            System.out.println("4 - Gestión de Trabajadores");
+            System.out.println("4 - Gestión de Trabajadores (LinkedList)  ");
             System.out.println("0 - Salir");
             System.out.print("Introduce una opción: ");
             op1=Integer.parseInt(teclado.next());
@@ -583,7 +571,7 @@ public class mainBiblioteca {
                                     String ISBN;
                                     System.out.print("Introduce el ISBN del libro a comprobar: ");
                                     ISBN = teclado.next();
-                                    ReservaL.comprobarEstadoLibro(reservaLibros, ISBN);
+                                    ReservaL.comprobarEstadoLibro(reservaLibros , ISBN);
                                     pressAnyKeyToContinue();
                                 }
                                 if (op3 == 3) {
