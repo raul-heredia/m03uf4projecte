@@ -7,7 +7,7 @@
 
 <VBox xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fje.m03uf4projecte.TaulaClientsController">
 	<children>
-		<Button fx:id="boto" onAction="#carregar" text="Carregar Dades" />
+		<Button fx:id="boto" onAction="#carregar" text="Cargar Datos" />
 		<TableView fx:id="taula">
 			<columns>
 				<TableColumn editable="false" sortable="true" text="Tipo">
