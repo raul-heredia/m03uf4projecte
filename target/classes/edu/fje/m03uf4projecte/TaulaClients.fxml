@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fje.m03uf4projecte.TaulaClientsController">
+	<children>
+		<Button fx:id="boto" onAction="#carregar" text="Carregar Dades" />
+		<TableView fx:id="taula">
+			<columns>
+				<TableColumn editable="false" sortable="true" text="Tipo">
+					<cellValueFactory>
+						<PropertyValueFactory property="Tipo" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn editable="false" sortable="true" text="Identificador">
+					<cellValueFactory>
+						<PropertyValueFactory property="Identificador" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn editable="false" sortable="true" text="Nombre">
+					<cellValueFactory>
+						<PropertyValueFactory property="Nombre" />
+					</cellValueFactory>
+				</TableColumn>
+				<TableColumn editable="false" sortable="true" text="Correo">
+					<cellValueFactory>
+						<PropertyValueFactory property="Correo" />
+					</cellValueFactory>
+				</TableColumn>
+            <TableColumn editable="false" sortable="true" text="Dirección">
+               <cellValueFactory>
+                  <PropertyValueFactory property="Direccion" />
+               </cellValueFactory>
+            </TableColumn>
+			</columns>
+
+			<items>
+				<FXCollections fx:factory="observableArrayList">
+				</FXCollections>
+			</items>
+		
+		</TableView>
+	</children>
+</VBox>
