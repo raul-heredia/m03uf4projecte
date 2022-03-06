@@ -12,8 +12,8 @@ public class TaulaLibros extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(BibliotecaApplication.class.getResource("libros.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 780, 220);
+        FXMLLoader fxmlLoader = new FXMLLoader(BibliotecaApplication.class.getResource("TaulaLibros.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 960, 320);
         stage.setTitle("Libros");
         stage.setScene(scene);
         stage.show();

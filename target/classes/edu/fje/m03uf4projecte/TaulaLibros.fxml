@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fje.m03uf4projecte.TaulaLibrosController">
+    <children>
+        <Button fx:id="boto" onAction="#carregar" text="Cargar Datos" />
+        <TableView fx:id="taula">
+            <columns>
+                <TableColumn editable="false" sortable="true" text="Tipo">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="Tipo" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn editable="false" sortable="true" text="Nombre del Libro">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="Nombre" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn editable="false" sortable="true" text="Autor">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="Autor" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn editable="false" sortable="true" text="Año de Publicación">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="AnyPublicacion" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn editable="false" sortable="true" text="ISBN">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="ISBN" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn editable="false" sortable="true" text="Género">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="Genero" />
+                    </cellValueFactory>
+                </TableColumn>
+            <TableColumn editable="false" sortable="true" text="Fecha de Impresión">
+               <cellValueFactory>
+                  <PropertyValueFactory property="FechaImpresion" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn editable="false" sortable="true" text="Nº de Páginas">
+               <cellValueFactory>
+                  <PropertyValueFactory property="NumeroPaginas" />
+               </cellValueFactory>
+            </TableColumn>
+            <TableColumn editable="false" sortable="true" text="Duración">
+               <cellValueFactory>
+                  <PropertyValueFactory property="Duracion" />
+               </cellValueFactory>
+            </TableColumn>
+            </columns>
+
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                </FXCollections>
+            </items>
+
+        </TableView>
+    </children>
+</VBox>
