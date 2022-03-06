@@ -13,7 +13,10 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.Writer;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -86,4 +89,24 @@ public class TaulaClientsController implements Initializable {
 		Node node = (Node) nodes.item(0);
 		return node.getNodeValue();
 	}
+
+	public void exportarClientes() throws Exception {
+		Writer writer = null;
+		try {
+			File file = new File("clientes.csv");
+			writer = new BufferedWriter(new FileWriter(file));
+			for (TaulaClientsProperties client : taula.getItems()) {
+
+				String text = client.getTipo() + "," + client.getIdentificador() + "," + client.getNombre() + "," + client.getDireccion() + "," + client.getCorreo() + "\n";
+				writer.write(text);
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		finally {
+			writer.flush();
+			writer.close();
+		}
+	}
+
 }

@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.collections.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
 
 <VBox xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.fje.m03uf4projecte.TaulaClientsController">
 	<children>
-		<Button fx:id="boto" onAction="#carregar" text="Cargar Datos" />
+		<Button fx:id="boto" onAction="#carregar" text="Cargar Datos">
+         <VBox.margin>
+            <Insets left="5.0" top="2.0" />
+         </VBox.margin>
+      </Button>
+		<Button fx:id="boto2" onAction="#exportarClientes" text="Exportar Clientes a CSV">
+         <VBox.margin>
+            <Insets left="5.0" top="5.0" />
+         </VBox.margin>
+      </Button>
 		<TableView fx:id="taula">
 			<columns>
 				<TableColumn editable="false" sortable="true" text="Tipo">
@@ -41,6 +51,9 @@
 				<FXCollections fx:factory="observableArrayList">
 				</FXCollections>
 			</items>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
 		
 		</TableView>
 	</children>
