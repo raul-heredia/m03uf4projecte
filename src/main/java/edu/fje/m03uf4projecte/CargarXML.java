@@ -62,11 +62,11 @@ public class CargarXML {
                 String correo = eElement.getElementsByTagName("Correo").item(0).getTextContent();
                 String direccion = eElement.getElementsByTagName("Direccion").item(0).getTextContent();
                 String identificador = eElement.getElementsByTagName("Identificador").item(0).getTextContent();
-
+                int carnet = Integer.parseInt(eElement.getElementsByTagName("Carnet").item(0).getTextContent());
                 if(tipo.equals("CPrivado")){
-                    clientes.add(new CPrivado(nombre, correo, direccion, identificador));
+                    clientes.add(new CPrivado(nombre, correo, direccion, identificador, carnet));
                 }else if (tipo.equals("CMusica")){
-                    clientes.add(new CMusica(nombre, correo, direccion, identificador));
+                    clientes.add(new CMusica(nombre, correo, direccion, identificador, carnet));
 
                 }
             }

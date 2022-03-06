@@ -25,6 +25,12 @@ public class Cliente {
         this.direccion = direccion;
         this.carnet = 50;
     }
+    public Cliente(String nombre, String email, String direccion, int carnet) {
+        this.nombre = nombre;
+        this.email = email;
+        this.direccion = direccion;
+        this.carnet = carnet;
+    }
 
     /**
      * Getter de la propiedad Nombre

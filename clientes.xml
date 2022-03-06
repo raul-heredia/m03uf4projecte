@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Clientes>
     <Cliente>
         <Tipo>CPrivado</Tipo>
@@ -5,6 +6,7 @@
         <Correo>raul.heredia@outlook.com</Correo>
         <Direccion>C/ Mallorca 666</Direccion>
         <Identificador>21651036Z</Identificador>
+        <Carnet>50</Carnet>
     </Cliente>
     <Cliente>
         <Tipo>CPrivado</Tipo>
@@ -12,6 +14,7 @@
         <Correo>marc.carbonell@outlook.com</Correo>
         <Direccion>C/ Pixapins 420</Direccion>
         <Identificador>21007891C</Identificador>
+        <Carnet>50</Carnet>
     </Cliente>
     <Cliente>
         <Tipo>CPrivado</Tipo>
@@ -19,6 +22,7 @@
         <Correo>juan.martinez@gmail.com</Correo>
         <Direccion>C/ Sant Andreu 33</Direccion>
         <Identificador>76120965X</Identificador>
+        <Carnet>50</Carnet>
     </Cliente>
     <Cliente>
         <Tipo>CMusica</Tipo>
@@ -26,6 +30,7 @@
         <Correo>hello.clot@fje.edu</Correo>
         <Direccion>C/ Valencia 680</Direccion>
         <Identificador>A67890098</Identificador>
+        <Carnet>50</Carnet>
     </Cliente>
     <Cliente>
         <Tipo>CMusica</Tipo>
@@ -33,6 +38,7 @@
         <Correo>escola.musical@musiccclot.edu</Correo>
         <Direccion>C/ Clot 12</Direccion>
         <Identificador>L77917632</Identificador>
+        <Carnet>50</Carnet>
     </Cliente>
     <Cliente>
         <Tipo>CMusica</Tipo>
@@ -40,5 +46,6 @@
         <Correo>hello.musicbarcelona@barcelonamusical.edu</Correo>
         <Direccion>AV/ Meridiana 396</Direccion>
         <Identificador>A56982014</Identificador>
+        <Carnet>50</Carnet>
     </Cliente>
 </Clientes>

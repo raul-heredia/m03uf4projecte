@@ -40,7 +40,6 @@ public class mainBiblioteca {
         discosVinilo.addAll(CargarXML.cargarVinilos());
         reservaLibros.addAll(CargarXML.cargarReservasLibros());
         reservaDiscosVinilo.addAll(CargarXML.cargarReservasVinilo());
-        System.out.printf(reservaDiscosVinilo.toString());
 
         //Disco Vinilo
         discosVinilo.add(new DiscoVinilo(1,"Los éxitos de Manolo Escobar", "Manolo Escobar", 1999, 15, 60));
@@ -117,6 +116,7 @@ public class mainBiblioteca {
                             nif=teclado.next();
                             try{
                                 clientes.add(new CPrivado(nombre, email, direccion, nif));
+                                GuardarXML.guardarClientes(clientes);
                                 System.out.println("Cliente añadido");
                             }catch(Exception e){
                                 System.out.println("Error: No se ha añadido el Cliente");
@@ -134,6 +134,7 @@ public class mainBiblioteca {
                             System.out.print("Introduzca la nueva dirección del cliente [Dejar en blanco para no modificar]: ");
                             direccion=teclado.next();
                             CPrivado.modificarCliente(clientes, nombre, email, direccion, nif);
+                            GuardarXML.guardarClientes(clientes);
                             pressAnyKeyToContinue();
                         }
                         if(op2 == 5){
@@ -141,6 +142,7 @@ public class mainBiblioteca {
                             System.out.print("Introduzca el DNI del cliente a eliminar: ");
                             dni=teclado.next();
                             CPrivado.eliminarCliente(clientes, dni);
+                            GuardarXML.guardarClientes(clientes);
                             pressAnyKeyToContinue();
                         }
                         if(op2 == 6){
@@ -172,6 +174,7 @@ public class mainBiblioteca {
                             idEscuela=teclado.next();
                             try{
                                 clientes.add(new CMusica(nombreEscuela, emailEscuela, direccionEscuela, idEscuela));
+                                GuardarXML.guardarClientes(clientes);
                                 System.out.println("Escuela añadida añadido");
                             }catch(Exception e){
                                 System.out.println("Error: No se ha añadido la Escuela");
@@ -189,6 +192,7 @@ public class mainBiblioteca {
                             System.out.print("Introduzca la nueva dirección de la Escuela [Dejar en blanco para no modificar]: ");
                             direccion=teclado.next();
                             CMusica.modificarEscuela(clientes, nombre, email, direccion, idEscuela);
+                            GuardarXML.guardarClientes(clientes);
                             pressAnyKeyToContinue();
                         }
                         if(op2 == 10){
@@ -196,6 +200,7 @@ public class mainBiblioteca {
                             System.out.print("Introduzca el Identificador de la escuela a eliminar: ");
                             idEscuela=teclado.next();
                             CMusica.eliminarEscuela(clientes, idEscuela);
+                            GuardarXML.guardarClientes(clientes);
                             pressAnyKeyToContinue();
                         }
                     }

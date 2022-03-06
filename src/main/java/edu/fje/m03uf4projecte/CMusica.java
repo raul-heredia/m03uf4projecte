@@ -22,6 +22,10 @@ public class CMusica extends Cliente{
         super(nombre, email, direccion);
         this.idEscola = idEscola;
     }
+    public CMusica(String nombre, String email, String direccion, String idEscola, int carnet) {
+            super(nombre, email, direccion, carnet);
+            this.idEscola = idEscola;
+        }
 
     /**
      * Getter de la propiedad IdEscola

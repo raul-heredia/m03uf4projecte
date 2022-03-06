@@ -199,6 +199,8 @@ public class ReservaL {
                     }
                 }
                 reservaLibros.remove(i);
+                // Guardamos por si acaso hemos perdido puntos
+                GuardarXML.guardarClientes(clientes);
                 System.out.println("La devolución se ha completado con éxito");
             }else{
                 System.out.println("El cliente con identificador " + nif + " no tenía ningún libro reservado.");

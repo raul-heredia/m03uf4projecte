@@ -21,6 +21,9 @@ public class CPrivado extends Cliente{
     public CPrivado(String nombre, String email, String direccion, String nif) {
         super(nombre, email, direccion);
         this.nif = nif;
+    }public CPrivado(String nombre, String email, String direccion, String nif, int carnet) {
+        super(nombre, email, direccion, carnet);
+        this.nif = nif;
     }
 
     /**
