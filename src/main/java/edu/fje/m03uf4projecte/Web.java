@@ -1,6 +1,7 @@
 package edu.fje.m03uf4projecte;
 
 import java.util.HashSet;
+import java.util.TreeSet;
 
 /**
  * Clase de las Webs que dan Audiolibros a la Biblioteca
@@ -89,6 +90,8 @@ public class Web {
         return telefono;
     }
 
+
+
     /**
      * Setter del Telefono
      * @param telefono Establece el  telefono de la empresa
@@ -96,4 +99,11 @@ public class Web {
     public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
+
+
+    @Override
+    public String toString() {
+        return nombreEmpresa + " - " + domSocial + " - " + idWebRegMercantil + " - " + telefono;
+    }
 }
+

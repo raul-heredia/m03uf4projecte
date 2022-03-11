@@ -97,4 +97,96 @@ public class GuardarXML {
             tfe.printStackTrace();
         }
     }
+    public static void guardarLibros(ArrayList libros){
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+            //Elemento raíz
+            Document doc = docBuilder.newDocument();
+            Element rootElement = doc.createElement("Libros");
+            doc.appendChild(rootElement);
+
+            //Primer elemento
+
+
+            for (int i = 0; i < libros.size(); i++) {
+                // Creamos elemeto cliente y lo añadimos al root element
+                Element libro = doc.createElement("Libro");
+                rootElement.appendChild(libro);
+                if(libros.get(i) instanceof LPapel){
+                    // Creamos elemento Tipo
+                    Element tipo = doc.createElement("Tipo");
+                    tipo.appendChild(doc.createTextNode(String.valueOf("LPapel")));
+                    libro.appendChild(tipo);
+                    // Creamos elemento Nombre
+                    Element nombre = doc.createElement("Nombre");
+                    nombre.appendChild(doc.createTextNode(String.valueOf(((LPapel) libros.get(i)).getTitulo())));
+                    libro.appendChild(nombre);
+                    // Creamos elemento Autor
+                    Element autor = doc.createElement("Autor");
+                    autor.appendChild(doc.createTextNode(String.valueOf(((LPapel) libros.get(i)).getAutor())));
+                    libro.appendChild(autor);
+                    // Creamos elemento Año publicacion
+                    Element anypublicacion = doc.createElement("AnyPublicacion");
+                    anypublicacion.appendChild(doc.createTextNode(String.valueOf(((LPapel) libros.get(i)).getAnoPublicacion())));
+                    libro.appendChild(anypublicacion);
+                    // Creamos elemento isbn
+                    Element isbn = doc.createElement("ISBN");
+                    isbn.appendChild(doc.createTextNode(String.valueOf(((LPapel) libros.get(i)).getISBN())));
+                    libro.appendChild(isbn);
+                    // Creamos elemento Genero
+                    Element genero = doc.createElement("Genero");
+                    genero.appendChild(doc.createTextNode(String.valueOf(((LPapel) libros.get(i)).getGenero())));
+                    libro.appendChild(genero);
+                    // Creamos elemento Fecha Impresion
+                    Element fechaImpresion = doc.createElement("FechaImpresion");
+                    fechaImpresion.appendChild(doc.createTextNode(String.valueOf(((LPapel) libros.get(i)).getFechaImpresion())));
+                    libro.appendChild(fechaImpresion);                    // Creamos elemento NumeroPaginas
+                    Element numeroPaginas = doc.createElement("NumeroPaginas");
+                    numeroPaginas.appendChild(doc.createTextNode(String.valueOf(((LPapel) libros.get(i)).getCantidadHojas())));
+                    libro.appendChild(numeroPaginas);
+                }else if(libros.get(i) instanceof AudioLibro){
+                    // Creamos elemento Tipo
+                    Element tipo = doc.createElement("Tipo");
+                    tipo.appendChild(doc.createTextNode(String.valueOf("AudioLibro")));
+                    libro.appendChild(tipo);
+                    // Creamos elemento Nombre
+                    Element nombre = doc.createElement("Nombre");
+                    nombre.appendChild(doc.createTextNode(String.valueOf(((AudioLibro) libros.get(i)).getTitulo())));
+                    libro.appendChild(nombre);
+                    // Creamos elemento Autor
+                    Element autor = doc.createElement("Autor");
+                    autor.appendChild(doc.createTextNode(String.valueOf(((AudioLibro) libros.get(i)).getAutor())));
+                    libro.appendChild(autor);
+                    // Creamos elemento Año publicacion
+                    Element anypublicacion = doc.createElement("AnyPublicacion");
+                    anypublicacion.appendChild(doc.createTextNode(String.valueOf(((AudioLibro) libros.get(i)).getAnoPublicacion())));
+                    libro.appendChild(anypublicacion);
+                    // Creamos elemento isbn
+                    Element isbn = doc.createElement("ISBN");
+                    isbn.appendChild(doc.createTextNode(String.valueOf(((AudioLibro) libros.get(i)).getISBN())));
+                    libro.appendChild(isbn);
+                    // Creamos elemento Genero
+                    Element genero = doc.createElement("Genero");
+                    genero.appendChild(doc.createTextNode(String.valueOf(((AudioLibro) libros.get(i)).getGenero())));
+                    libro.appendChild(genero);
+                    // Creamos elemento Fecha Impresion
+                    Element duracion = doc.createElement("Duracion");
+                    duracion.appendChild(doc.createTextNode(String.valueOf(((AudioLibro) libros.get(i)).getDuracion())));
+                    libro.appendChild(duracion);
+                }
+            }
+            //Se escribe el contenido del XML en un archivo
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File("libros.xml"));
+            transformer.transform(source, result);
+        } catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+        } catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        }
+    }
 }

@@ -1,8 +1,6 @@
 package edu.fje.m03uf4projecte;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**

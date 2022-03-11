@@ -32,13 +32,20 @@ public class mainBiblioteca {
         ArrayList<ReservaL> reservaLibros = new ArrayList<>();
         ArrayList<ReservaDV> reservaDiscosVinilo = new ArrayList<>();
 
+        //Pruebas TreeSET ///////////////////
+        TreeSet<Web> llistaWebs = new TreeSet<Web>(Comparator.comparing(Web::getIdWebRegMercantil));
+        llistaWebs.add( new Web("Rincon del Lector", "C/ Valencia 2", 4785898, 665489789));
+        llistaWebs.add( new Web("Abacus", "C/ Gran Via 208", 8974587, 933025678));
+        llistaWebs.add( new Web("Casa del Libro", "C/ Trias i Pujol 172", 7894568, 932145689));
+
+
         // Cargar datos en listas
         clientes.addAll(CargarXML.cargarClientes());
         libros.addAll(CargarXML.cargarLibros());
         discosVinilo.addAll(CargarXML.cargarVinilos());
         trabajadores.addAll(CargarXML.cargarTrabajadores(clientes,libros, discosVinilo));
         discosVinilo.addAll(CargarXML.cargarVinilos());
-        reservaLibros.addAll(CargarXML.cargarReservasLibros());
+        //reservaLibros.addAll(CargarXML.cargarReservasLibros());
         reservaDiscosVinilo.addAll(CargarXML.cargarReservasVinilo());
 
         //Disco Vinilo
@@ -53,6 +60,7 @@ public class mainBiblioteca {
         // RESERVA DISCO VINILO
         reservaDiscosVinilo.add(new ReservaDV(1, "A67890098"));
 
+
         // VARIABLES
         int op1=99,op2=99, op3=99, op4=99; // Declarados en 99 porque el que botón que permite salir es el 0
 
@@ -64,6 +72,7 @@ public class mainBiblioteca {
             System.out.println("2 - Gestionar Material");
             System.out.println("3 - Préstamos");
             System.out.println("4 - Gestión de Trabajadores (LinkedList)  ");
+            System.out.println("5 - Listar Webs (TreeSet");
             System.out.println("0 - Salir");
             System.out.print("Introduce una opción: ");
             op1=Integer.parseInt(teclado.next());
@@ -277,6 +286,7 @@ public class mainBiblioteca {
                                     cantidadHojas=Integer.parseInt(teclado.next());
                                     try{
                                         libros.add(new LPapel( titulo, autor, anoPublicacion, ISBN, genero,fechaImpresion, cantidadHojas));
+                                        GuardarXML.guardarLibros(libros);
                                         System.out.print("El Libro se ha añadido ");
                                     } catch (Exception e) {
                                         System.out.print("Error: El Libro no se ha añadido ");
@@ -327,6 +337,7 @@ public class mainBiblioteca {
                                         cantidadHojas = 0;
                                     }
                                     LPapel.modificarLibro( libros,  titulo,  autor,  anoPublicacion,  ISBN,  genero,  fechaImpresion,  cantidadHojas);
+                                    GuardarXML.guardarLibros(libros);
                                     pressAnyKeyToContinue();
                                 }
                                 if(op3 == 5){
@@ -334,6 +345,7 @@ public class mainBiblioteca {
                                     System.out.print("Introduzca el ISBN del libro a eliminar: ");
                                     ISBN=teclado.next();
                                     LPapel.eliminarLibro(libros, ISBN);
+                                    GuardarXML.guardarLibros(libros);
                                     pressAnyKeyToContinue();
                                 }
                             }
@@ -398,6 +410,7 @@ public class mainBiblioteca {
 
                                     try{
                                         libros.add(new AudioLibro(titulo, autor, anoPublicacion, ISBN, genero,duracion));
+                                        GuardarXML.guardarLibros(libros);
                                         System.out.println("El AudioLibro se ha añadido ");
                                     } catch (Exception e) {
                                         System.out.println("Error: El AudioLibro no se ha añadido ");
@@ -446,6 +459,15 @@ public class mainBiblioteca {
                                         duracion = 0;
                                     }
                                     AudioLibro.modificarAudioLibro( libros, titulo, autor, anoPublicacion, ISBN, genero, duracion);
+                                    GuardarXML.guardarLibros(libros);
+                                    pressAnyKeyToContinue();
+                                }
+                                if(op3 == 5){
+                                    String ISBN;
+                                    System.out.print("Introduzca el ISBN del Audiolibro a eliminar: ");
+                                    ISBN=teclado.next();
+                                    AudioLibro.eliminarAudioLibro(libros, ISBN);
+                                    GuardarXML.guardarLibros(libros);
                                     pressAnyKeyToContinue();
                                 }
                             }
@@ -722,7 +744,15 @@ public class mainBiblioteca {
                             op2 = 0;
                         }
                     }
+                case 5:
+                    // Los elementos se muestran segun el Registro Mercantil (de Menor a Mayor)
+                    for (Web ele : llistaWebs)
+                        System.out.print(ele + "\n");
+                    System.out.println();
+                    pressAnyKeyToContinue();
+                    ////////////////////////////////////
                     break;
+
                 default:
                     System.out.println("Selecciona una opción válida");
                     pressAnyKeyToContinue();
