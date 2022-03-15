@@ -32,7 +32,13 @@ public class mainBiblioteca {
         ArrayList<ReservaL> reservaLibros = new ArrayList<>();
         ArrayList<ReservaDV> reservaDiscosVinilo = new ArrayList<>();
 
-        //Pruebas TreeSET ///////////////////
+
+        // Pruebas TreeSET ///////////////////
+        HashMap<String, DiscoVinilo> dviniloMAP = new HashMap<>();
+        dviniloMAP.put("1",new DiscoVinilo(8,"Colores", "JBalvin", 2020, 10, 40));
+        dviniloMAP.put("2",new DiscoVinilo(7,"Calle 13", "Residente", 2008, 8, 30));
+
+        //////////////////
         TreeSet<Web> llistaWebs = new TreeSet<Web>(Comparator.comparing(Web::getIdWebRegMercantil));
         llistaWebs.add( new Web("Rincon del Lector", "C/ Valencia 2", 4785898, 665489789));
         llistaWebs.add( new Web("Abacus", "C/ Gran Via 208", 8974587, 933025678));
@@ -72,7 +78,9 @@ public class mainBiblioteca {
             System.out.println("2 - Gestionar Material");
             System.out.println("3 - Préstamos");
             System.out.println("4 - Gestión de Trabajadores (LinkedList)  ");
-            System.out.println("5 - Listar Webs (TreeSet");
+            System.out.println("5 - Listar Webs con TreeSet");
+            System.out.println("6 - Listar DiscosVinilo con HashMap");
+
             System.out.println("0 - Salir");
             System.out.print("Introduce una opción: ");
             op1=Integer.parseInt(teclado.next());
@@ -751,8 +759,15 @@ public class mainBiblioteca {
                     System.out.println();
                     pressAnyKeyToContinue();
                     ////////////////////////////////////
+                case 6:
+                    // Listar el HashMap
+                    // Imprimimos el Map con un Iterador
+                    Iterator<String> it = dviniloMAP.keySet().iterator();
+                    while(it.hasNext()){
+                        String key = it.next();
+                        System.out.println("Clave: " + key + " -> Valor: " + dviniloMAP.get(key));
+                    }
                     break;
-
                 default:
                     System.out.println("Selecciona una opción válida");
                     pressAnyKeyToContinue();
