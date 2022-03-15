@@ -51,14 +51,12 @@ public class mainBiblioteca {
         libros.addAll(CargarXML.cargarLibros());
         discosVinilo.addAll(CargarXML.cargarVinilos());
         trabajadores.addAll(CargarXML.cargarTrabajadores(clientes,libros, discosVinilo));
-        //reservaLibros.addAll(CargarXML.cargarReservasLibros());
+        reservaLibros.addAll(CargarXML.cargarReservasLibros());
         reservaDiscosVinilo.addAll(CargarXML.cargarReservasVinilo());
 
         // RESERVA LIBROS
         //reservaLibros.add(new ReservaL("21651036Z", "9781524747158"));
 
-        // RESERVA DISCO VINILO
-        reservaDiscosVinilo.add(new ReservaDV(1, "A67890098"));
         // VARIABLES
         int op1=99,op2=99, op3=99, op4=99; // Declarados en 99 porque el que botón que permite salir es el 0
 

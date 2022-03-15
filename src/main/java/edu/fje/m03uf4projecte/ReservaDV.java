@@ -169,6 +169,7 @@ public class ReservaDV {
             // 5. Instanciar préstamo y guardar en arraylist reservas.
             if(!isPrestadoDisco && !isEscuelaConPrestamo){
                 reservaDiscosVinilo.add(new ReservaDV(idDisco, idEscuela));
+                GuardarXML.guardarReservasDiscosVinilo(reservaDiscosVinilo);
             }else{
                 if(isPrestadoDisco) System.out.println("Error, el disco ya está en prestamo");
                 if(isEscuelaConPrestamo) System.out.println("Error, la escuela ya tiene un disco en prestamo");
@@ -203,6 +204,8 @@ public class ReservaDV {
                     }
                 }
                 reservaDiscosVinilo.remove(i);
+                GuardarXML.guardarReservasDiscosVinilo(reservaDiscosVinilo);
+                GuardarXML.guardarClientes(clientes);
                 System.out.println("La devolución se ha completado con éxito");
             }else{
                 System.out.println("La escuela con identificador " + idEscuela + " no tenía ningún disco reservado.");

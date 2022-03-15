@@ -257,7 +257,6 @@ public class GuardarXML {
 
             //Primer elemento
 
-
             for (int i = 0; i < treballadors.size(); i++) {
                 // Creamos elemeto cliente y lo añadimos al root element
                 Element trabajador = doc.createElement("Trabajador");
@@ -285,6 +284,80 @@ public class GuardarXML {
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new File("trabajadores.xml"));
+            transformer.transform(source, result);
+        } catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+        } catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        }
+    }
+    public static void guardarReservasLibro(ArrayList reservasLibro){
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+            //Elemento raíz
+            Document doc = docBuilder.newDocument();
+            Element rootElement = doc.createElement("Reservas");
+            doc.appendChild(rootElement);
+
+            //Primer elemento
+            for (int i = 0; i < reservasLibro.size(); i++) {
+                // Creamos elemeto cliente y lo añadimos al root element
+                Element reserva = doc.createElement("Reserva");
+                rootElement.appendChild(reserva);
+                // Creamos elemento Tipo
+                Element identificador = doc.createElement("IdentificadorCliente");
+                identificador.appendChild(doc.createTextNode(String.valueOf(((ReservaL) reservasLibro.get(i)).getNif())));
+                reserva.appendChild(identificador);
+                // Creamos elemento Nombre
+                Element isbn = doc.createElement("ISBN");
+                isbn.appendChild(doc.createTextNode(String.valueOf(((ReservaL) reservasLibro.get(i)).getISBN())));
+                reserva.appendChild(isbn);
+
+            }
+            //Se escribe el contenido del XML en un archivo
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File("reservasLibros.xml"));
+            transformer.transform(source, result);
+        } catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+        } catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        }
+    }
+    public static void guardarReservasDiscosVinilo(ArrayList reservasDiscosVinilo){
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+            //Elemento raíz
+            Document doc = docBuilder.newDocument();
+            Element rootElement = doc.createElement("Reservas");
+            doc.appendChild(rootElement);
+
+            //Primer elemento
+            for (int i = 0; i < reservasDiscosVinilo.size(); i++) {
+                // Creamos elemeto cliente y lo añadimos al root element
+                Element reserva = doc.createElement("Reserva");
+                rootElement.appendChild(reserva);
+                // Creamos elemento Tipo
+                Element identificadorDisco = doc.createElement("IdentificadorDisco");
+                identificadorDisco.appendChild(doc.createTextNode(String.valueOf(((ReservaDV) reservasDiscosVinilo.get(i)).getIdDisco())));
+                reserva.appendChild(identificadorDisco);
+                // Creamos elemento Nombre
+                Element identificadorEscuela = doc.createElement("IdentificadorEscuela");
+                identificadorEscuela.appendChild(doc.createTextNode(String.valueOf(((ReservaDV) reservasDiscosVinilo.get(i)).getIdEscuela())));
+                reserva.appendChild(identificadorEscuela);
+
+            }
+            //Se escribe el contenido del XML en un archivo
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File("reservasDiscoVinilo.xml"));
             transformer.transform(source, result);
         } catch (ParserConfigurationException pce) {
             pce.printStackTrace();

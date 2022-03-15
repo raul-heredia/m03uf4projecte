@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Trabajadores>
-    <Trabajador>
-        <Identificador>23745699Z</Identificador>
-        <Nombre>Kilian Bappé</Nombre>
-        <isAdmin>false</isAdmin>
-        <Salario>1200.0</Salario>
-    </Trabajador>
-    <Trabajador>
-        <Identificador>25978966L</Identificador>
-        <Nombre>Pedri Puig</Nombre>
-        <isAdmin>true</isAdmin>
-        <Salario>2000.0</Salario>
-    </Trabajador>
-    <Trabajador>
-        <Identificador>45878966D</Identificador>
-        <Nombre>Riqui González</Nombre>
-        <isAdmin>false</isAdmin>
-        <Salario>800.0</Salario>
-    </Trabajador>
-</Trabajadores>
+<Reservas>
+    <Reserva>
+        <IdentificadorDisco>1</IdentificadorDisco>
+        <IdentificadorEscuela>A67890098</IdentificadorEscuela>
+    </Reserva>
+</Reservas>

@@ -161,6 +161,7 @@ public class ReservaL {
             // 5. Instanciar présamo y guardar en arraylist reservas.
             if(!isPrestadoLibro && !isUsuarioConPrestamo){
                 reservaLibros.add(new ReservaL(nif, ISBN));
+                GuardarXML.guardarReservasLibro(reservaLibros);
                 if(isLibroPapel) System.out.println("El libro con ISBN " + ISBN + " ha sido prestado");
                 if(isAudioLibro) System.out.println("El Audiolibro con ISBN " + ISBN + " ha sido prestado");
             }else{
@@ -197,6 +198,7 @@ public class ReservaL {
                     }
                 }
                 reservaLibros.remove(i);
+                GuardarXML.guardarReservasLibro(reservaLibros);
                 // Guardamos por si acaso hemos perdido puntos
                 GuardarXML.guardarClientes(clientes);
                 System.out.println("La devolución se ha completado con éxito");
