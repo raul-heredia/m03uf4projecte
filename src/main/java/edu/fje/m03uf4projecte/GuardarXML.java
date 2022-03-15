@@ -189,4 +189,59 @@ public class GuardarXML {
             tfe.printStackTrace();
         }
     }
+    public static void guardarDiscosVinilo(ArrayList discosVinilo){
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+            //Elemento raíz
+            Document doc = docBuilder.newDocument();
+            Element rootElement = doc.createElement("Discos");
+            doc.appendChild(rootElement);
+
+            //Primer elemento
+
+
+            for (int i = 0; i < discosVinilo.size(); i++) {
+                // Creamos elemeto cliente y lo añadimos al root element
+                Element disco = doc.createElement("Disco");
+                rootElement.appendChild(disco);
+                // Creamos elemento Tipo
+                Element identificadorDisco = doc.createElement("IdentificadorDisco");
+                identificadorDisco.appendChild(doc.createTextNode(String.valueOf(((DiscoVinilo) discosVinilo.get(i)).getIdDisco())));
+                disco.appendChild(identificadorDisco);
+                // Creamos elemento Nombre
+                Element nombre = doc.createElement("Nombre");
+                nombre.appendChild(doc.createTextNode(String.valueOf(((DiscoVinilo) discosVinilo.get(i)).getTitulo())));
+                disco.appendChild(nombre);
+                // Creamos elemento Autor
+                Element autor = doc.createElement("Autor");
+                autor.appendChild(doc.createTextNode(String.valueOf(((DiscoVinilo) discosVinilo.get(i)).getAutor())));
+                disco.appendChild(autor);
+                // Creamos elemento Año publicacion
+                Element anypublicacion = doc.createElement("AnyPublicacion");
+                anypublicacion.appendChild(doc.createTextNode(String.valueOf(((DiscoVinilo) discosVinilo.get(i)).getAnoPublicacion())));
+                disco.appendChild(anypublicacion);
+                // Creamos elemento isbn
+                Element numeroPistas = doc.createElement("NumeroPistas");
+                numeroPistas.appendChild(doc.createTextNode(String.valueOf(((DiscoVinilo) discosVinilo.get(i)).getNumPista())));
+                disco.appendChild(numeroPistas);
+                // Creamos elemento Fecha Impresion
+                Element duracion = doc.createElement("Duracion");
+                duracion.appendChild(doc.createTextNode(String.valueOf(((DiscoVinilo) discosVinilo.get(i)).getDuracionDisco())));
+                disco.appendChild(duracion);
+
+            }
+            //Se escribe el contenido del XML en un archivo
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File("discosVinilo.xml"));
+            transformer.transform(source, result);
+        } catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+        } catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        }
+    }
 }

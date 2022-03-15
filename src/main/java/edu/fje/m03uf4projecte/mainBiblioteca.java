@@ -35,8 +35,9 @@ public class mainBiblioteca {
 
         // Pruebas TreeSET ///////////////////
         HashMap<String, DiscoVinilo> dviniloMAP = new HashMap<>();
-        dviniloMAP.put("1",new DiscoVinilo(8,"Colores", "JBalvin", 2020, 10, 40));
-        dviniloMAP.put("2",new DiscoVinilo(7,"Calle 13", "Residente", 2008, 8, 30));
+        dviniloMAP.put("1",new DiscoVinilo(1,"Los éxitos de Manolo Escobar", "Manolo Escobar", 1999, 15, 60));
+        dviniloMAP.put("2",new DiscoVinilo(2,"Greatest Hits I, II & III: The Platinum Collection - 3 Discos", "Queen", 2011, 51, 208));
+        dviniloMAP.put("3",new DiscoVinilo(3,"Night Visions Ed Deluxe", "Imagine Dragons", 2013, 5, 40));
 
         //////////////////
         TreeSet<Web> llistaWebs = new TreeSet<Web>(Comparator.comparing(Web::getIdWebRegMercantil));
@@ -50,22 +51,15 @@ public class mainBiblioteca {
         libros.addAll(CargarXML.cargarLibros());
         discosVinilo.addAll(CargarXML.cargarVinilos());
         trabajadores.addAll(CargarXML.cargarTrabajadores(clientes,libros, discosVinilo));
-        discosVinilo.addAll(CargarXML.cargarVinilos());
         //reservaLibros.addAll(CargarXML.cargarReservasLibros());
         reservaDiscosVinilo.addAll(CargarXML.cargarReservasVinilo());
 
-        //Disco Vinilo
-        discosVinilo.add(new DiscoVinilo(1,"Los éxitos de Manolo Escobar", "Manolo Escobar", 1999, 15, 60));
-        discosVinilo.add(new DiscoVinilo(2,"Greatest Hits I, II & III: The Platinum Collection - 3 Discos", "Queen", 2011, 51, 208));
-        discosVinilo.add(new DiscoVinilo(3,"Night Visions Ed Deluxe", "Imagine Dragons", 2013, 5, 40));
-        // TRABAJADORES
         trabajadores.add(new Treballador("23745699Z","Killian",false, 1200F, clientes, libros, discosVinilo));
         // RESERVA LIBROS
         //reservaLibros.add(new ReservaL("21651036Z", "9781524747158"));
 
         // RESERVA DISCO VINILO
         reservaDiscosVinilo.add(new ReservaDV(1, "A67890098"));
-
 
         // VARIABLES
         int op1=99,op2=99, op3=99, op4=99; // Declarados en 99 porque el que botón que permite salir es el 0
@@ -523,6 +517,7 @@ public class mainBiblioteca {
                                     duracionDisco=Integer.parseInt(teclado.next());
                                     try{
                                         discosVinilo.add(new DiscoVinilo(idDisco, titulo, autor, anoPublicacion, numPista, duracionDisco));
+                                        GuardarXML.guardarDiscosVinilo(discosVinilo);
                                         System.out.println("Disco añadido");
                                     }catch(Exception e){
                                         System.out.println("Error, No se ha podido añadir el Disco");
@@ -558,6 +553,7 @@ public class mainBiblioteca {
                                     }
                                     try{
                                         DiscoVinilo.modificarDiscoVinilo(discosVinilo, idDisco, titulo, autor, anoPublicacion, numPista, duracionDisco);
+                                        GuardarXML.guardarDiscosVinilo(discosVinilo);
                                         System.out.println("Disco Modificado");
                                     }catch(Exception e){
                                         System.out.println("Error, No se ha podido modificar el Disco");
@@ -569,6 +565,7 @@ public class mainBiblioteca {
                                     System.out.print("Introduzca el ID del Disco de Vinilo a eliminar: ");
                                     id=Integer.parseInt(teclado.next());
                                     DiscoVinilo.eliminarDiscoVinilo(discosVinilo, id);
+                                    GuardarXML.guardarDiscosVinilo(discosVinilo);
                                     pressAnyKeyToContinue();
                                 }
                             }
@@ -767,6 +764,7 @@ public class mainBiblioteca {
                         String key = it.next();
                         System.out.println("Clave: " + key + " -> Valor: " + dviniloMAP.get(key));
                     }
+                    pressAnyKeyToContinue();
                     break;
                 default:
                     System.out.println("Selecciona una opción válida");
