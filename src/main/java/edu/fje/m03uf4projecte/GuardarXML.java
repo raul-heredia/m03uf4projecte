@@ -14,6 +14,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class GuardarXML {
     public static void guardarClientes(ArrayList clientes){
@@ -237,6 +238,53 @@ public class GuardarXML {
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
             StreamResult result = new StreamResult(new File("discosVinilo.xml"));
+            transformer.transform(source, result);
+        } catch (ParserConfigurationException pce) {
+            pce.printStackTrace();
+        } catch (TransformerException tfe) {
+            tfe.printStackTrace();
+        }
+    }
+    public static void guardarTrabajadores(LinkedList treballadors){
+        try {
+            DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+            DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+
+            //Elemento raíz
+            Document doc = docBuilder.newDocument();
+            Element rootElement = doc.createElement("Trabajadores");
+            doc.appendChild(rootElement);
+
+            //Primer elemento
+
+
+            for (int i = 0; i < treballadors.size(); i++) {
+                // Creamos elemeto cliente y lo añadimos al root element
+                Element trabajador = doc.createElement("Trabajador");
+                rootElement.appendChild(trabajador);
+                // Creamos elemento Tipo
+                Element identificador = doc.createElement("Identificador");
+                identificador.appendChild(doc.createTextNode(String.valueOf(((Treballador) treballadors.get(i)).getNif())));
+                trabajador.appendChild(identificador);
+                // Creamos elemento Nombre
+                Element nombre = doc.createElement("Nombre");
+                nombre.appendChild(doc.createTextNode(String.valueOf(((Treballador) treballadors.get(i)).getNombre())));
+                trabajador.appendChild(nombre);
+                // Creamos elemento Autor
+                Element isAdmin = doc.createElement("isAdmin");
+                isAdmin.appendChild(doc.createTextNode(String.valueOf(((Treballador) treballadors.get(i)).getAdmin())));
+                trabajador.appendChild(isAdmin);
+                // Creamos elemento Año publicacion
+                Element salario = doc.createElement("Salario");
+                salario.appendChild(doc.createTextNode(String.valueOf(((Treballador) treballadors.get(i)).getSalario())));
+                trabajador.appendChild(salario);
+
+            }
+            //Se escribe el contenido del XML en un archivo
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            Transformer transformer = transformerFactory.newTransformer();
+            DOMSource source = new DOMSource(doc);
+            StreamResult result = new StreamResult(new File("trabajadores.xml"));
             transformer.transform(source, result);
         } catch (ParserConfigurationException pce) {
             pce.printStackTrace();

@@ -1,27 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<Discos>
-    <Disco>
-        <IdentificadorDisco>1</IdentificadorDisco>
-        <Nombre>Los éxitos de Manolo Escobar</Nombre>
-        <Autor>Manolo Escobar</Autor>
-        <AnyPublicacion>1999</AnyPublicacion>
-        <NumeroPistas>15</NumeroPistas>
-        <Duracion>60</Duracion>
-    </Disco>
-    <Disco>
-        <IdentificadorDisco>2</IdentificadorDisco>
-        <Nombre>Greatest Hits I, II &amp; III: The Platinum Collection - 3 Discos</Nombre>
-        <Autor>Queen</Autor>
-        <AnyPublicacion>2011</AnyPublicacion>
-        <NumeroPistas>51</NumeroPistas>
-        <Duracion>208</Duracion>
-    </Disco>
-    <Disco>
-        <IdentificadorDisco>3</IdentificadorDisco>
-        <Nombre>Night Visions Ed Deluxe</Nombre>
-        <Autor>Imagine Dragons</Autor>
-        <AnyPublicacion>2013</AnyPublicacion>
-        <NumeroPistas>5</NumeroPistas>
-        <Duracion>40</Duracion>
-    </Disco>
-</Discos>
+<Trabajadores>
+    <Trabajador>
+        <Identificador>23745699Z</Identificador>
+        <Nombre>Kilian Bappé</Nombre>
+        <isAdmin>false</isAdmin>
+        <Salario>1200.0</Salario>
+    </Trabajador>
+    <Trabajador>
+        <Identificador>25978966L</Identificador>
+        <Nombre>Pedri Puig</Nombre>
+        <isAdmin>true</isAdmin>
+        <Salario>2000.0</Salario>
+    </Trabajador>
+    <Trabajador>
+        <Identificador>45878966D</Identificador>
+        <Nombre>Riqui González</Nombre>
+        <isAdmin>false</isAdmin>
+        <Salario>800.0</Salario>
+    </Trabajador>
+</Trabajadores>

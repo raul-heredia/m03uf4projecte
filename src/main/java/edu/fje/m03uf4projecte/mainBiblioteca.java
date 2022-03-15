@@ -54,13 +54,11 @@ public class mainBiblioteca {
         //reservaLibros.addAll(CargarXML.cargarReservasLibros());
         reservaDiscosVinilo.addAll(CargarXML.cargarReservasVinilo());
 
-        trabajadores.add(new Treballador("23745699Z","Killian",false, 1200F, clientes, libros, discosVinilo));
         // RESERVA LIBROS
         //reservaLibros.add(new ReservaL("21651036Z", "9781524747158"));
 
         // RESERVA DISCO VINILO
         reservaDiscosVinilo.add(new ReservaDV(1, "A67890098"));
-
         // VARIABLES
         int op1=99,op2=99, op3=99, op4=99; // Declarados en 99 porque el que botón que permite salir es el 0
 
@@ -712,6 +710,7 @@ public class mainBiblioteca {
                                 }
                                 try{
                                     trabajadores.add(new Treballador(nif,nombre,false, salario, clientes, libros, discosVinilo));
+                                    GuardarXML.guardarTrabajadores(trabajadores);
                                     System.out.println("Trabajador añadido");
                                 }catch(Exception e){
                                     System.out.println("Error: No se ha añadido el Trabajador");
@@ -732,6 +731,7 @@ public class mainBiblioteca {
                                     salario = 0;
                                 }
                                 Treballador.modificarTrabajador(trabajadores, nif, nombre, false, salario);
+                                GuardarXML.guardarTrabajadores(trabajadores);
                                 pressAnyKeyToContinue();
                             }
                             if(op2 == 5){
@@ -740,9 +740,9 @@ public class mainBiblioteca {
                                 System.out.print("Introduzca el DNI del Trabajador a eliminar: ");
                                 nif=teclado.next();
                                 Treballador.eliminarTrabajador(trabajadores, nif);
+                                GuardarXML.guardarTrabajadores(trabajadores);
                                 pressAnyKeyToContinue();
                             }
-
                         }else{
                             System.out.println("Usuario y/o contraseña incorrectos");
                             pressAnyKeyToContinue();
