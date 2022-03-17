@@ -2,6 +2,7 @@ package edu.fje.m03uf4projecte;
 
 import java.text.ParseException;
 import java.util.*;
+import java.util.function.Function;
 
 /**
  * Clase Main donde se desplega la aplicacion con sus menus
@@ -32,14 +33,18 @@ public class mainBiblioteca {
         ArrayList<ReservaL> reservaLibros = new ArrayList<>();
         ArrayList<ReservaDV> reservaDiscosVinilo = new ArrayList<>();
 
+        //Clase generica 1
+        ClaseGenerica1<ReservaDV> generico = new ClaseGenerica1<ReservaDV>();
+        generico.afegir(CargarXML.cargarReservasVinilo());
+        //Clase generica 2
 
-        // Pruebas TreeSET ///////////////////
+
+
+        //HASHMAP & TREESET
         HashMap<String, DiscoVinilo> dviniloMAP = new HashMap<>();
         dviniloMAP.put("1",new DiscoVinilo(1,"Los éxitos de Manolo Escobar", "Manolo Escobar", 1999, 15, 60));
         dviniloMAP.put("2",new DiscoVinilo(2,"Greatest Hits I, II & III: The Platinum Collection - 3 Discos", "Queen", 2011, 51, 208));
         dviniloMAP.put("3",new DiscoVinilo(3,"Night Visions Ed Deluxe", "Imagine Dragons", 2013, 5, 40));
-
-        //////////////////
         TreeSet<Web> llistaWebs = new TreeSet<Web>(Comparator.comparing(Web::getIdWebRegMercantil));
         llistaWebs.add( new Web("Rincon del Lector", "C/ Valencia 2", 4785898, 665489789));
         llistaWebs.add( new Web("Abacus", "C/ Gran Via 208", 8974587, 933025678));
@@ -70,6 +75,7 @@ public class mainBiblioteca {
             System.out.println("4 - Gestión de Trabajadores (LinkedList)  ");
             System.out.println("5 - Listar Webs con TreeSet");
             System.out.println("6 - Listar DiscosVinilo con HashMap");
+            System.out.println("7 - Listar Reservas de Libros con Clase Generica");
 
             System.out.println("0 - Salir");
             System.out.print("Introduce una opción: ");
@@ -762,6 +768,10 @@ public class mainBiblioteca {
                         String key = it.next();
                         System.out.println("Clave: " + key + " -> Valor: " + dviniloMAP.get(key));
                     }
+                    pressAnyKeyToContinue();
+                case 7:
+                    // Listar los elementos de las Reservas con una clase Generica
+                    System.out.println(generico.mostrar());
                     pressAnyKeyToContinue();
                     break;
                 default:
