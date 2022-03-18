@@ -79,6 +79,8 @@ public class mainBiblioteca {
             System.out.println("5 - Listar Webs con TreeSet");
             System.out.println("6 - Listar DiscosVinilo con HashMap");
             System.out.println("7 - Listar Reservas de Libros con Clase Generica");
+            System.out.println("8 - Listar Tipo de Objeto con Clase Generica");
+
 
             System.out.println("0 - Salir");
             System.out.print("Introduce una opción: ");
@@ -775,6 +777,10 @@ public class mainBiblioteca {
                 case 7:
                     // Listar los elementos de las Reservas con una clase Generica
                     System.out.println(generico.mostrar());
+                    pressAnyKeyToContinue();
+                case 8:
+                    // Listar los tipos de los objetos pasados en la clase Generica
+                    generico2.mostrarTipo();
                     pressAnyKeyToContinue();
                     break;
                 default:
