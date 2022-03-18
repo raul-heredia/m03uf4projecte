@@ -37,7 +37,10 @@ public class mainBiblioteca {
         ClaseGenerica1<ReservaDV> generico = new ClaseGenerica1<ReservaDV>();
         generico.afegir(CargarXML.cargarReservasVinilo());
         //Clase generica 2
-
+        LPapel test1 = new LPapel("Test1","Marc",1999, "654789122", Genero.Terror,"12/06/2001", 213);
+        Treballador test2 = new Treballador("23877205P", "Marc", true, 1200F, clientes, libros, discosVinilo);
+        ClaseGenerica2<LPapel,Treballador> generico2 = new ClaseGenerica2<>(test1, test2);
+        generico2.mostrarTipo();
 
 
         //HASHMAP & TREESET
